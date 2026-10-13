@@ -58,8 +58,9 @@ Ad ─► landing.html ──(popup form)──► vip-upsell.html ──($27 pa
    *Alternative:* swap the modal's `<form>` for a GHL form embed if you'd rather use native forms.
 4. **Order form ($27).** GHL's order form can't sit inside Custom HTML. Split `vip-upsell.html` at the two `GHL SPLIT POINT` comments into two Custom HTML elements and place the native **2-Step Order Form** element between them. Product: *Bet On Yourself VIP Kit*, $27 one time. Success redirect → VIP Survey. (Or set `orderFormUrl` to an embeddable checkout.)
 5. **Videos.** Replace `WISTIA_MEDIA_ID` on the upsell and confirmation pages. The placeholder thumbnail hides automatically once a real ID is in.
-6. **Images.** Michael's headshot and Mags' photo currently hotlink Michael's Kajabi CDN, with a navy "MK"/"MM"/"TB" monogram fallback. Re-upload them to the GHL Media Library and swap the URLs. Tyler B. has no photo yet.
-7. **Pixels.** Each page has a marked tracking slot in `<head>`. Fire `Lead` on the upsell page load (it only loads after opt-in) and `Purchase` (27 USD) on the survey page.
+6. **Images.** Michael's photos live in `assets/` (`michael-headshot.jpg`, the yellow-background portrait, and `michael-speaking.jpg`). The pages load them from this repo via `raw.githubusercontent.com`. Before launch, upload both to the GHL Media Library and swap the URLs: search the pages for `michael-ketchen/main/assets/`. Mags' photo still hotlinks Michael's Kajabi CDN, and Tyler B. has no photo yet. Every photo slot falls back to a navy monogram if an image fails.
+7. **Case-study videos.** Set `data-wistia-id` on each `.case-play` button (landing + VIP thank-you). Until then, the play button opens a "Video coming soon" popup.
+8. **Pixels.** Each page has a marked tracking slot in `<head>`. Fire `Lead` on the upsell page load (it only loads after opt-in) and `Purchase` (27 USD) on the survey page.
 
 ## Automations (GHL Workflows)
 
@@ -79,14 +80,15 @@ Pulled from michaelketchen.com: navy `#16163F` / `#0E0E2C`, gold `#D9A02F` / `#E
 
 ## Still needed from Michael
 
-- [ ] Headshot + candid "on a deal" photo (re-hosted), Tyler B. photo, logo file
+- [ ] Tyler B. photo, a re-hosted Mags photo, logo file
+- [ ] Case-study videos for Tyler and Mags (play buttons are already on the page)
 - [ ] Videos: upsell VIP pitch, confirmation "watch this then check your email", portal lessons
 - [ ] Name of the team member who runs the 1 on 1 deal review calls, plus the booking calendar
 - [ ] Webinar platform + join link, SMS sending number, sending email address, mailing address (email footer)
 - [ ] **AI angle:** which AI tools he actually uses, so the "AI-assisted deal analysis" claims match reality
 - [ ] **Buy box numbers** in `copy/vip-resources.md` (currently illustrative)
 - [ ] Confirm the backend offer pitched on the webinar (assumed Group Coaching)
-- [ ] Confirm proof stats: $250M+ AUM, 30+ BRRRR cycles, $20M+ equity returned (his site lists $100M–$250M at different times)
+- [ ] Confirm proof stats: $250M+ AUM, $20M+ equity returned, "less than a decade" teacher → full-time (his site lists $100M–$250M at different times)
 - [ ] Testimonial permission: Tyler B., Magdiel M., Bill M., Kailey (quotes taken verbatim from michaelketchen.com)
 - [ ] "Capping the room at 200" (SMS 1) is only OK if it's true for the webinar platform
 - [ ] Privacy policy + terms URLs (footer placeholders)

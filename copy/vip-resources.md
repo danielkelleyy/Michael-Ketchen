@@ -5,7 +5,7 @@ These are the four PDFs inside the $27 VIP Kit. They replace the reference funne
 | Reference PDF | Bet On Yourself version |
 |---|---|
 | Section 8 Market Hit List | **1. My BRRRR Buy Box + Agent & Seller Scripts** |
-| The Section 8 Cash Flow Playbook | **2. Why BRRRR: The Playbook Behind My First 30+ Cycles** |
+| The Section 8 Cash Flow Playbook | **2. Why BRRRR: The Playbook Behind My Portfolio** |
 | The 6 apps I use | **3. My AI Deal-Finding & Underwriting Prompts** |
 | Why Section 8 | **4. The Freedom Number Worksheet** |
 
@@ -76,7 +76,7 @@ Hi [Owner], it's [Name]. I reached out about [address]. No pressure at all. If y
 
 ---
 
-## 2. Why BRRRR: The Playbook Behind My First 30+ Cycles
+## 2. Why BRRRR: The Playbook Behind My Portfolio
 
 ### The problem with "save up and buy"
 

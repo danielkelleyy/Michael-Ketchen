@@ -54,6 +54,9 @@
     --success-tint:#E8F5EE;
     --danger:#D64545;
     --star:#E5A823;
+    --map-buy:#D9A02F;
+    --map-watch:#F0D592;
+    --map-pass:#E9E2D8;
     --font-heading:'League Spartan','Montserrat',sans-serif;
     --font-body:'Montserrat',sans-serif;
     --radius-sm:10px;
@@ -228,7 +231,8 @@
   .host{ display:grid; grid-template-columns:330px 1fr; gap:36px; padding:28px; align-items:center; }
   .photo{ position:relative; overflow:hidden; border-radius:18px; background:linear-gradient(150deg,var(--navy),#2c2c72); aspect-ratio:1/1; }
   .photo::after{ content:attr(data-initials); position:absolute; inset:0; display:grid; place-items:center; font-family:var(--font-heading); font-weight:800; font-size:64px; color:rgba(229,184,90,.85); z-index:0; }
-  .photo img{ position:relative; z-index:1; width:100%; height:100%; object-fit:cover; }
+  .photo img{ position:relative; z-index:1; width:100%; height:100%; object-fit:cover; object-position:50% 32%; }
+  .faq-photo img{ object-position:42% 30%; }
   .host .photo{ border:4px solid var(--gold-tint); box-shadow:0 0 0 1px #F1DFB4; }
   .host h3{ font-size:30px; font-weight:800; margin-bottom:14px; }
   .host p{ color:var(--muted); margin-bottom:12px; }
@@ -242,6 +246,7 @@
   .cases{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
   .case{ overflow:hidden; }
   .case-photo{ position:relative; height:250px; border-radius:0; aspect-ratio:auto; }
+  .case-photo::after{ display:none; }
   .case-photo::before{ content:""; position:absolute; inset:0; z-index:2; background:linear-gradient(transparent 45%, rgba(14,14,44,.88)); }
   .case-tag{ position:absolute; top:14px; left:14px; z-index:3; background:#fff; color:var(--navy); font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:6px 11px; border-radius:999px; }
   .case-who{ position:absolute; left:20px; bottom:16px; z-index:3; color:#fff; }
@@ -286,6 +291,21 @@
   .final-card .when b{ color:var(--navy); }
   .divider{ height:1px; background:var(--line); margin:30px 0 26px; }
 
+  /* Case-study play button + video popup */
+  .case-play{ position:absolute; left:50%; top:42%; z-index:4; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; gap:10px; background:none; border:none; cursor:pointer; padding:0; font:inherit; }
+  .case-play .disc{ width:74px; height:74px; border-radius:50%; background:linear-gradient(180deg,var(--gold-light),var(--gold)); display:grid; place-items:center; box-shadow:0 0 0 8px rgba(255,255,255,.22), 0 16px 30px -10px rgba(0,0,0,.6); transition:transform .15s ease; }
+  .case-play .disc::after{ content:""; margin-left:6px; border-style:solid; border-width:13px 0 13px 21px; border-color:transparent transparent transparent var(--navy); }
+  .case-play:hover .disc{ transform:scale(1.07); }
+  .case-play .lbl{ background:rgba(14,14,44,.72); color:#fff; font-size:12.5px; font-weight:700; letter-spacing:.04em; padding:6px 12px; border-radius:999px; }
+  .vmodal{ position:fixed; inset:0; z-index:1100; display:none; align-items:center; justify-content:center; padding:20px; background:rgba(14,14,44,.82); }
+  .vmodal.open{ display:flex; }
+  .vmodal-inner{ position:relative; width:100%; max-width:900px; }
+  .vmodal-frame{ position:relative; aspect-ratio:16/9; border-radius:16px; overflow:hidden; background:var(--navy-deep); box-shadow:0 40px 80px -30px rgba(0,0,0,.7); }
+  .vmodal-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .vmodal-empty{ position:absolute; inset:0; display:grid; place-items:center; text-align:center; color:#fff; padding:24px; font-weight:600; }
+  .vmodal-empty b{ display:block; font-family:var(--font-heading); font-size:24px; color:var(--gold-light); margin-bottom:6px; }
+  .vmodal-close{ position:absolute; top:-46px; right:0; width:38px; height:38px; border:none; border-radius:10px; background:#fff; color:var(--navy); font-size:22px; cursor:pointer; }
+
   /* Video slot */
   .video-frame{ max-width:720px; margin:28px auto 0; padding:8px; border-radius:22px; background:#fff; border:1px solid var(--line); box-shadow:var(--shadow-card); }
   .video-inner{ position:relative; aspect-ratio:16/9; border-radius:16px; overflow:hidden; background:radial-gradient(circle at 70% 40%, #2c2c72, var(--navy-deep)); }
@@ -295,6 +315,13 @@
   .video-placeholder .vp-3{ display:inline-block; background:var(--gold); color:var(--navy); font-family:var(--font-heading); font-weight:900; font-size:clamp(22px,4.4vw,44px); line-height:1; padding:8px 12px 4px; border-radius:6px; }
   .video-placeholder .play{ position:absolute; right:12%; top:50%; transform:translateY(-50%); width:clamp(56px,10vw,96px); aspect-ratio:1; border-radius:50%; background:#fff; display:grid; place-items:center; box-shadow:0 0 0 10px rgba(255,255,255,.15); }
   .video-placeholder .play::after{ content:""; margin-left:6px; border-style:solid; border-width:clamp(11px,1.8vw,18px) 0 clamp(11px,1.8vw,18px) clamp(18px,3vw,30px); border-color:transparent transparent transparent var(--navy); }
+  .video-placeholder .vp-face{ position:absolute; top:0; right:0; bottom:0; width:50%; height:100%; max-width:none; object-fit:cover; object-position:50% 30%; clip-path:polygon(16% 0,100% 0,100% 100%,0 100%); background:var(--gold); }
+  .video-placeholder.has-face{ padding-right:46%; }
+  .video-placeholder.has-face .play{ right:auto; left:8%; top:auto; bottom:9%; transform:none; width:clamp(44px,8vw,72px); }
+  .video-placeholder.has-face .play::after{ border-width:clamp(9px,1.4vw,14px) 0 clamp(9px,1.4vw,14px) clamp(14px,2.3vw,23px); }
+  .video-placeholder.has-face .vp-1{ font-size:clamp(15px,3vw,32px); }
+  .video-placeholder.has-face .vp-2{ font-size:clamp(30px,6.4vw,66px); }
+  .video-placeholder.has-face .vp-3{ font-size:clamp(15px,3.4vw,36px); }
   .video-inner .wistia_responsive_padding{ position:absolute !important; inset:0; padding:0 !important; }
 
   /* Calendar-invite mock */
@@ -358,6 +385,7 @@
     .logo-word{ font-size:17px; }
     .invite .i-btns span{ padding:7px 14px; font-size:13px; }
     .invite .i-btns span.light{ display:none; }
+    .video-placeholder.has-face .play{ left:auto; right:5%; bottom:7%; }
   }
 /* ==== BOY SHARED STYLES END ==== */
 
@@ -474,7 +502,8 @@
               <div class="wistia_embed wistia_async_WISTIA_MEDIA_ID seo=true videoFoam=true autoPlay=true muted=true" style="height:100%;position:relative;width:100%">&nbsp;</div>
             </div>
           </div>
-          <div class="video-placeholder" aria-hidden="true">
+          <div class="video-placeholder has-face" aria-hidden="true">
+            <img class="vp-face" src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/michael-headshot.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.remove('has-face'); this.remove()">
             <span class="vp-1">BEFORE SUNDAY</span>
             <span class="vp-2">WATCH</span>
             <span class="vp-3">THIS FIRST</span>
@@ -586,8 +615,8 @@
           <div><b>30 day no-questions-asked guarantee</b><p>If you don't feel this was worth 10x the $27, email us and we'll refund you. You keep everything.</p></div>
         </div>
         <div class="byline">
-          <div class="photo" data-initials="MK"><img src="https://kajabi-storefronts-production.kajabi-cdn.com/kajabi-storefronts-production/file-uploads/themes/2166656347/settings_images/8d3d66-a126-ff14-6a86-48b8288f268e_2.png" alt="Michael Ketchen" loading="lazy" onerror="this.remove()"></div>
-          <div><b>Michael Ketchen</b><span>$250M+ portfolio · 30+ BRRRR cycles</span></div>
+          <div class="photo" data-initials="MK"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/michael-headshot.jpg" alt="Michael Ketchen" loading="lazy" onerror="this.remove()"></div>
+          <div><b>Michael Ketchen</b><span>From $100K teacher to $250M+ in real estate</span></div>
         </div>
       </div>
 
@@ -620,12 +649,10 @@
       </div>
       <div class="quotes">
         <div class="card quote">
-          <span class="stars">★★★★★</span>
           <p>"Since working with Mike, we have tripled in size, went through three full cycle deals, and quadrupled our net worth. If you want to propel your real estate investing forward, Mike's coaching is a must!"</p>
           <span class="who"><b>Bill M.</b> · Co-founder, KB4 Property Group</span>
         </div>
         <div class="card quote">
-          <span class="stars">★★★★★</span>
           <p>"Mike taught me how to find my freedom number and showed me that I didn't need as much as I thought to live my dream life. I became a real estate investor at 24 years old with Mike's help!"</p>
           <span class="who"><b>Kailey</b> · First-time investor</span>
         </div>

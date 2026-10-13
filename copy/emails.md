@@ -109,7 +109,7 @@ Inside you'll find:
 • My BRRRR Buy Box + Agent & Seller Scripts
 • The Freedom Number Worksheet
 • My AI Deal-Finding & Underwriting Prompts
-• Why BRRRR (the playbook behind my first 30+ cycles)
+• Why BRRRR (the playbook behind my portfolio)
 • My Deal Analyzer
 
 NEXT STEP: book your 1 on 1 deal review with my team:
