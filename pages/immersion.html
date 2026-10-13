@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  BET ON YOURSELF REAL ESTATE INVESTOR IMMERSION — EVENT LANDING PAGE
+  Redesign of michaelketchen.com/bet-on-yourself-immersion in the style of the
+  Life Surge event page, in Michael's navy / gold / cream.
+
+  Paste into a GHL Funnel page's Custom Code (HTML) element with the default
+  header/footer/theme disabled. See ../README.md.
+
+  QUICK-SWAP CONFIG (search for these to update):
+    1) FUNNEL_CONFIG (bottom <script>) — event start (countdown) and the three
+       checkout URLs (GA, VIP, Speaker Day).
+    2) Images — load from this repo's assets/ via raw.githubusercontent.com.
+       Re-host in the GHL Media Library before launch (search "main/assets/").
+    3) WISTIA_MEDIA_ID — event promo video + member testimonial video.
+    4) [PLACEHOLDER: ...] — event photos, venue photo, terms URL.
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#BetOnYourself Real Estate Investor Immersion · Oct 14–16, 2026 · Salem, NH</title>
+<meta name="description" content="Michael Ketchen presents the #BetOnYourself Real Estate Investor Immersion: 3 days, 13 expert operators, one room. October 14–16, 2026 at The Artisan Hotel, Salem, NH.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- ================= TRACKING PIXELS: paste Meta Pixel / Google Ads / GTM here ================= -->
+<!-- ================================================================================================ -->
+
+<style>
+  :root{
+    --ink:#0A0A22;
+    --navy:#16163F;
+    --navy-deep:#0E0E2C;
+    --navy-2:#1E1E55;
+    --gold:#D9A02F;
+    --gold-light:#E5B85A;
+    --gold-bright:#F2C55C;
+    --gold-ink:#9A6A0C;
+    --cream:#E6DCD3;
+    --cream-soft:#F6F1EB;
+    --white:#FFFFFF;
+    --muted-dark:rgba(255,255,255,.72);
+    --muted:#5A5E78;
+    --line:#E7E0D6;
+    --font-heading:'League Spartan','Montserrat',sans-serif;
+    --font-body:'Montserrat',sans-serif;
+    --container-w:1120px;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; overflow-x:hidden; }
+  .ev-root{ width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw); min-height:100vh; background:var(--ink) !important; color:var(--white) !important; font-family:var(--font-body); font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  .ev-root img{ display:block; max-width:100%; }
+  :where(.ev-root) h1,:where(.ev-root) h2,:where(.ev-root) h3,:where(.ev-root) p{ margin:0; }
+  :where(.ev-root) h1,:where(.ev-root) h2,:where(.ev-root) h3{ font-family:var(--font-heading); letter-spacing:-.01em; line-height:1.05; }
+  .container{ width:100%; max-width:var(--container-w); margin:0 auto; padding:0 20px; }
+  .gold{ color:var(--gold-light); }
+  .center{ text-align:center; }
+  .eyebrow{ font-family:var(--font-heading); font-weight:700; font-size:14px; letter-spacing:.32em; text-transform:uppercase; }
+  .h-xl{ font-size:clamp(34px,5.4vw,58px); font-weight:900; text-transform:uppercase; }
+  .h-lg{ font-size:clamp(28px,4.2vw,44px); font-weight:800; text-transform:uppercase; }
+  .lead{ font-size:18px; color:var(--muted-dark); max-width:720px; margin:14px auto 0; }
+
+  /* Buttons */
+  .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; font-family:var(--font-heading); font-weight:800; text-transform:uppercase; letter-spacing:.03em; text-decoration:none; border:none; cursor:pointer; border-radius:999px; transition:transform .15s ease, filter .15s ease; line-height:1; white-space:nowrap; }
+  .btn-gold{ background:linear-gradient(180deg,var(--gold-bright),var(--gold)); color:var(--ink); box-shadow:0 0 0 3px rgba(242,197,92,.25), 0 14px 30px -10px rgba(217,160,47,.75); font-size:22px; padding:19px 40px 16px; }
+  .btn-gold:hover{ transform:translateY(-2px); filter:brightness(1.05); }
+  .btn-sm{ font-size:15px; padding:12px 22px 10px; }
+  .btn-navy{ background:var(--navy); color:var(--gold-light); font-size:16px; padding:15px 26px 13px; }
+
+  /* Nav + marquee */
+  .nav{ position:sticky; top:0; z-index:50; background:rgba(10,10,34,.94); backdrop-filter:blur(8px); border-bottom:1px solid rgba(255,255,255,.08); }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; gap:20px; padding:12px 20px; max-width:var(--container-w); margin:0 auto; }
+  .wordmark{ text-decoration:none; color:#fff; font-family:var(--font-heading); font-weight:900; font-size:22px; letter-spacing:.01em; line-height:.9; padding-top:4px; }
+  .wordmark small{ display:block; font-size:10.5px; font-weight:700; letter-spacing:.34em; color:var(--gold-light); margin-top:3px; }
+  .nav-links{ display:flex; gap:30px; }
+  .nav-links a{ color:#fff; text-decoration:none; font-family:var(--font-heading); font-weight:600; font-size:14px; letter-spacing:.12em; text-transform:uppercase; padding-top:3px; }
+  .nav-links a:hover{ color:var(--gold-light); }
+  .marquee{ overflow:hidden; background:var(--gold); color:var(--ink); white-space:nowrap; font-family:var(--font-heading); font-weight:800; font-size:14px; letter-spacing:.14em; text-transform:uppercase; padding:11px 0 9px; }
+  .marquee-track{ display:inline-block; animation:marquee 38s linear infinite; }
+  .marquee-track span{ margin:0 22px; }
+  @keyframes marquee{ from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
+
+  /* Hero */
+  .hero{ position:relative; overflow:hidden; padding:58px 0 0; background:
+      radial-gradient(ellipse 60% 70% at 50% 35%, rgba(30,30,85,.95), transparent 70%),
+      var(--ink); }
+  .hero::before{ content:""; position:absolute; inset:0; pointer-events:none; background:
+      linear-gradient(115deg, transparent 0 30%, rgba(229,184,90,.10) 30% 31%, transparent 31% 100%),
+      linear-gradient(65deg, transparent 0 69%, rgba(229,184,90,.10) 69% 70%, transparent 70% 100%),
+      radial-gradient(ellipse 30% 40% at 50% 0%, rgba(229,184,90,.25), transparent 70%); }
+  .hero-panel{ position:absolute; top:0; bottom:120px; width:34%; overflow:hidden; }
+  .hero-panel img{ width:100%; height:100%; object-fit:cover; }
+  .hero-panel::after{ content:""; position:absolute; inset:0; }
+  .hero-panel--l{ left:0; clip-path:polygon(0 0,100% 0,62% 100%,0 100%); }
+  .hero-panel--l img{ object-position:40% 25%; }
+  .hero-panel--l::after{ background:linear-gradient(90deg, rgba(10,10,34,.25), rgba(10,10,34,.55) 60%, var(--ink)), linear-gradient(0deg, var(--ink), transparent 40%); }
+  .hero-panel--r{ right:0; clip-path:polygon(0 0,100% 0,100% 100%,38% 100%); }
+  .hero-panel--r img{ object-position:50% 22%; }
+  .hero-panel--r::after{ background:linear-gradient(270deg, rgba(10,10,34,.35), rgba(10,10,34,.62) 60%, var(--ink)), linear-gradient(0deg, var(--ink), transparent 40%); }
+  .hero-edge{ position:absolute; top:0; bottom:120px; width:34%; pointer-events:none; }
+  .hero-edge--l{ left:0; background:linear-gradient(to bottom right, transparent calc(50% - 2px), var(--gold) calc(50% - 2px) calc(50% + 1px), transparent calc(50% + 1px)); clip-path:polygon(0 0,100% 0,62% 100%,0 100%); opacity:.0; }
+  .hero-inner{ position:relative; z-index:2; text-align:center; max-width:720px; margin:0 auto; padding:0 20px; }
+  .presents{ color:var(--gold-light); }
+  .title{ margin:20px 0 6px; }
+  .title .t1{ display:block; font-size:clamp(40px,7.4vw,86px); font-weight:900; line-height:.9; color:#fff; text-transform:uppercase; letter-spacing:-.02em; }
+  .title .t2{ display:block; font-size:clamp(18px,2.7vw,30px); font-weight:800; letter-spacing:.18em; color:#fff; text-transform:uppercase; margin-top:10px; }
+  .title .t3{ display:block; font-size:clamp(46px,9vw,108px); font-weight:900; line-height:.9; letter-spacing:.06em; text-transform:uppercase; margin-top:6px; background:linear-gradient(180deg,var(--gold-bright),var(--gold) 60%,#B07E1E); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .when{ font-family:var(--font-heading); font-weight:800; font-size:clamp(20px,2.6vw,28px); text-transform:uppercase; margin-top:18px; }
+  .where{ font-family:var(--font-heading); font-weight:600; font-size:14.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted-dark); margin-top:6px; }
+  .hero .btn-gold{ margin-top:28px; }
+  .scarcity{ font-size:14px; font-style:italic; color:var(--muted-dark); margin-top:16px; }
+  .faces{ position:relative; z-index:2; margin:46px auto 0; max-width:1000px; padding:0 20px; }
+  .faces img{ width:100%; border-radius:18px 18px 0 0; }
+  .faces-label{ position:absolute; left:50%; top:-16px; transform:translateX(-50%); background:var(--ink); border:1.5px solid var(--gold); color:var(--gold-light); font-family:var(--font-heading); font-weight:800; font-size:13px; letter-spacing:.2em; text-transform:uppercase; padding:9px 18px 6px; border-radius:999px; white-space:nowrap; z-index:3; }
+
+  /* Partner strip */
+  .partners{ background:#fff; color:var(--navy); padding:18px 0 16px; }
+  .partners .eyebrow{ font-size:11.5px; color:#8A8DA3; text-align:center; margin-bottom:10px; letter-spacing:.38em; }
+  .partner-row{ display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:6px 18px; }
+  .partner-row img{ height:52px; width:auto; mix-blend-mode:multiply; }
+  .partner-row .presenting{ background:var(--ink); border-radius:10px; padding:8px 12px; display:flex; flex-direction:column; align-items:center; gap:3px; }
+  .partner-row .presenting span{ font-family:var(--font-heading); font-weight:800; font-size:9px; letter-spacing:.24em; color:var(--gold-light); }
+  .partner-row .presenting img{ height:30px; mix-blend-mode:normal; }
+
+  /* Generic bands */
+  .band{ position:relative; padding:90px 0; }
+  .band--ink{ background:var(--ink); }
+  .band--navy{ background:radial-gradient(ellipse 70% 50% at 50% 0%, rgba(229,184,90,.12), transparent 70%), var(--navy-deep); }
+  .band--stars{ background:
+      radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,.7), transparent 60%), radial-gradient(1px 1px at 72% 12%, rgba(255,255,255,.55), transparent 60%),
+      radial-gradient(1.5px 1.5px at 34% 64%, rgba(255,255,255,.5), transparent 60%), radial-gradient(1px 1px at 88% 52%, rgba(255,255,255,.6), transparent 60%),
+      radial-gradient(1px 1px at 52% 86%, rgba(255,255,255,.45), transparent 60%), radial-gradient(1px 1px at 6% 78%, rgba(255,255,255,.5), transparent 60%),
+      radial-gradient(ellipse 80% 60% at 50% 0%, #22225E, transparent 70%), var(--navy-deep); }
+  .band--gold{ background:radial-gradient(ellipse 70% 60% at 50% 0%, var(--gold-bright), transparent 70%), linear-gradient(180deg,var(--gold),#C38A20); color:var(--ink); }
+  .band--cream{ background:var(--cream-soft); color:var(--navy); }
+  .band--white{ background:#fff; color:var(--navy); }
+  .head{ text-align:center; margin-bottom:46px; }
+  .head .eyebrow{ display:block; margin-bottom:10px; }
+
+  /* Intro */
+  .intro{ display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:center; }
+  .intro h2{ color:var(--gold-light); font-size:clamp(28px,3.6vw,40px); font-weight:900; text-transform:uppercase; }
+  .intro .kicker{ font-weight:700; font-size:18px; margin:14px 0 10px; }
+  .intro p{ color:var(--muted-dark); }
+  .icon-list{ list-style:none; padding:0; margin:26px 0 0; display:flex; flex-direction:column; gap:16px; }
+  .icon-list li{ display:grid; grid-template-columns:46px 1fr; gap:14px; align-items:center; color:#fff; }
+  .icon-list svg{ width:40px; height:40px; stroke:var(--gold-light); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+  .icon-list b{ color:var(--gold-light); }
+  .seen{ margin-top:24px; font-family:var(--font-heading); font-weight:800; font-size:20px; }
+  .seen span{ display:block; color:var(--gold-light); font-size:26px; text-transform:uppercase; margin-top:2px; }
+  .collage{ display:grid; grid-template-columns:1fr 1fr; grid-template-rows:170px 120px 170px; gap:12px; }
+  .ph{ position:relative; overflow:hidden; border-radius:16px; background:linear-gradient(150deg,var(--navy-2),var(--navy-deep)); }
+  .ph img{ width:100%; height:100%; object-fit:cover; }
+  .ph-empty{ display:grid; place-items:center; text-align:center; color:rgba(255,255,255,.55); font-size:12.5px; font-weight:600; padding:14px; border:1.5px dashed rgba(229,184,90,.4); background:
+      radial-gradient(circle at 30% 30%, rgba(229,184,90,.18), transparent 60%), linear-gradient(150deg,var(--navy-2),var(--navy-deep)); }
+  .ph-empty b{ display:block; color:var(--gold-light); font-family:var(--font-heading); font-size:15px; letter-spacing:.08em; text-transform:uppercase; }
+  .collage .a{ grid-row:1 / 3; } .collage .b{ grid-row:1 / 2; } .collage .c{ grid-row:2 / 4; } .collage .d{ grid-row:3 / 4; }
+  .collage .a img{ object-position:42% 30%; } .collage .c img{ object-position:50% 25%; }
+  .video-wrap{ max-width:760px; margin:60px auto 0; padding:12px; border-radius:22px; background:#fff; box-shadow:0 30px 60px -30px rgba(0,0,0,.8); }
+  .video{ position:relative; aspect-ratio:16/9; border-radius:14px; overflow:hidden; background:linear-gradient(150deg,var(--navy-2),var(--ink)); }
+  .video .poster{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.55; }
+  .video .play{ position:absolute; inset:0; display:grid; place-items:center; }
+  .video .play i{ width:84px; height:84px; border-radius:50%; background:linear-gradient(180deg,var(--gold-bright),var(--gold)); display:grid; place-items:center; box-shadow:0 0 0 10px rgba(255,255,255,.18); }
+  .video .play i::after{ content:""; margin-left:6px; border-style:solid; border-width:15px 0 15px 24px; border-color:transparent transparent transparent var(--ink); }
+  .video .cap{ position:absolute; left:0; right:0; bottom:18px; text-align:center; font-weight:700; font-size:15px; color:#fff; text-shadow:0 2px 8px rgba(0,0,0,.6); }
+  .cta-row{ text-align:center; margin-top:40px; }
+
+  /* Pillars (Four W's) */
+  .band--gold .head h2{ color:var(--ink); }
+  .band--gold .head .pre{ font-family:var(--font-heading); font-weight:700; font-size:26px; display:block; }
+  .band--gold .head .post{ font-family:var(--font-heading); font-weight:700; font-size:22px; display:block; margin-top:4px; }
+  .pillars{ display:grid; grid-template-columns:1fr 1fr; gap:14px; max-width:960px; margin:0 auto; }
+  .pillar{ position:relative; overflow:hidden; border-radius:16px; padding:26px 28px; min-height:160px; background:linear-gradient(100deg, var(--ink) 52%, rgba(10,10,34,.55)), var(--navy); color:#fff; }
+  .pillar .ghost{ position:absolute; right:-6px; bottom:-26px; font-family:var(--font-heading); font-weight:900; font-size:150px; line-height:1; color:rgba(229,184,90,.12); }
+  .pillar h3{ font-size:30px; font-weight:900; text-transform:uppercase; }
+  .pillar .sub{ font-family:var(--font-heading); font-weight:800; font-size:14px; letter-spacing:.16em; color:var(--gold-light); text-transform:uppercase; margin:4px 0 8px; }
+  .pillar p{ font-size:14.5px; font-style:italic; color:var(--muted-dark); max-width:420px; position:relative; }
+
+  /* Experience tiles */
+  .tiles{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; max-width:960px; margin:0 auto; }
+  .tile{ position:relative; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:170px; border-radius:16px; overflow:hidden; text-decoration:none; color:#fff; padding:18px; background:linear-gradient(0deg, rgba(10,10,34,.95), rgba(10,10,34,.2) 70%), var(--navy); transition:transform .15s ease; }
+  .tile:hover{ transform:translateY(-3px); }
+  .tile img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.45; }
+  .tile b{ position:relative; font-family:var(--font-heading); font-weight:900; font-size:32px; text-transform:uppercase; letter-spacing:.02em; line-height:1; }
+  .tile span{ position:relative; font-size:12px; font-weight:700; letter-spacing:.2em; color:var(--gold-light); text-transform:uppercase; margin-top:6px; }
+  .tile .flag{ position:absolute; top:12px; right:12px; left:auto; background:var(--gold); color:var(--ink); font-size:10.5px; letter-spacing:.12em; padding:5px 9px 3px; border-radius:6px; margin:0; }
+  .tile--vip{ box-shadow:inset 0 0 0 2px var(--gold); }
+
+  /* Speakers */
+  .band--stars .head h2{ color:#fff; }
+  .speakers{ display:grid; grid-template-columns:repeat(4,1fr); gap:26px 20px; }
+  .spk{ position:relative; display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start; width:100%; text-align:left; background:none; border:none; padding:0; color:#fff; cursor:pointer; font:inherit; }
+  .spk .pic{ width:100%; position:relative; border-radius:18px; overflow:hidden; aspect-ratio:1/1.05; background:linear-gradient(180deg,var(--gold-bright),var(--gold) 45%,var(--navy) 100%); display:flex; align-items:flex-end; justify-content:center; transition:transform .18s ease; }
+  .spk:hover .pic{ transform:translateY(-4px); }
+  .spk .pic img{ width:86%; height:auto; margin-bottom:-2%; filter:drop-shadow(0 10px 18px rgba(0,0,0,.35)); }
+  .spk .pic::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:46%; background:linear-gradient(0deg, var(--navy-deep), transparent); }
+  .spk .name{ display:block; position:relative; z-index:2; margin:-58px 14px 0; font-family:var(--font-heading); font-weight:900; font-size:26px; line-height:.95; text-transform:uppercase; }
+  .spk .role{ position:relative; z-index:2; display:block; margin:6px 14px 0; color:var(--gold-light); font-size:13px; font-weight:600; line-height:1.3; }
+  .spk .more{ display:inline-block; margin:8px 14px 0; font-size:11.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.6); border-bottom:1px solid rgba(255,255,255,.3); }
+  .spk:hover .more{ color:var(--gold-light); border-color:var(--gold-light); }
+  .spk .bio{ display:none; }
+  .host-banner{ position:relative; overflow:hidden; display:grid; grid-template-columns:320px 1fr; align-items:center; gap:30px; margin-top:56px; border-radius:22px; padding:0 40px 0 0; background:linear-gradient(90deg, var(--gold) 0 280px, var(--ink) 280px); box-shadow:inset 0 0 0 1px rgba(229,184,90,.4); }
+  .host-banner img{ height:300px; width:320px; object-fit:cover; object-position:50% 20%; }
+  .host-banner .eyebrow{ color:var(--gold-light); font-size:13px; }
+  .host-banner h3{ font-size:clamp(34px,4.6vw,54px); font-weight:900; text-transform:uppercase; margin:6px 0 8px; }
+  .host-banner p{ color:var(--muted-dark); max-width:520px; }
+  .fineprint{ text-align:center; font-size:12.5px; color:rgba(255,255,255,.55); margin-top:22px; }
+
+  /* Experience */
+  .band--cream .head h2{ color:var(--navy); }
+  .band--cream .lead{ color:var(--muted); }
+  .mosaic{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .mtile{ position:relative; overflow:hidden; height:220px; border-radius:16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#fff; background:var(--navy); }
+  .mtile img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .mtile::before{ content:""; position:absolute; inset:0; background:rgba(10,10,34,.62); z-index:1; }
+  .mtile b,.mtile span{ position:relative; z-index:2; }
+  .mtile b{ font-family:var(--font-heading); font-weight:900; font-size:30px; line-height:1; text-transform:uppercase; }
+  .mtile span{ font-family:var(--font-heading); font-weight:700; font-size:22px; color:var(--gold-light); margin-top:6px; }
+  .agenda{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:44px; }
+  .day{ background:var(--ink); color:#fff; border-radius:18px; padding:26px 24px; border-top:5px solid var(--gold); }
+  .day--vip{ border-top-color:var(--gold-bright); box-shadow:0 0 0 1px rgba(229,184,90,.5); }
+  .day .eyebrow{ color:var(--gold-light); font-size:12px; letter-spacing:.22em; }
+  .day h3{ font-size:26px; font-weight:900; text-transform:uppercase; margin:8px 0 4px; }
+  .day .meta{ font-size:14px; color:var(--muted-dark); }
+  .day .meta b{ color:#fff; }
+  .badge{ display:inline-block; margin:12px 0 4px; font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; padding:5px 10px 4px; border-radius:6px; background:rgba(229,184,90,.15); color:var(--gold-light); border:1px solid rgba(229,184,90,.4); }
+  .badge--solid{ background:var(--gold); color:var(--ink); border-color:var(--gold); }
+  .day ul{ list-style:none; padding:0; margin:14px 0 0; display:flex; flex-direction:column; gap:9px; }
+  .day li{ position:relative; padding-left:22px; font-size:14.5px; color:rgba(255,255,255,.86); line-height:1.45; }
+  .day li::before{ content:"★"; position:absolute; left:0; top:0; color:var(--gold); font-size:12px; }
+  .day li b{ color:var(--gold-light); }
+  .after{ text-align:center; margin-top:38px; }
+  .after .pre{ font-size:20px; color:var(--navy); }
+  .after b{ display:block; font-family:var(--font-heading); font-weight:900; font-size:26px; text-transform:uppercase; color:var(--gold-ink); margin-top:2px; }
+  .band--cream .fineprint{ color:#8A8DA3; }
+
+  /* Tickets */
+  .band--gold .eyebrow{ color:var(--ink); }
+  .tickets{ display:grid; grid-template-columns:1fr 1.08fr 1fr; gap:16px; align-items:stretch; max-width:1040px; margin:0 auto; }
+  .ticket{ position:relative; display:flex; flex-direction:column; border-radius:20px; overflow:hidden; background:var(--ink); color:#fff; box-shadow:0 24px 50px -24px rgba(10,10,34,.9); }
+  .ticket-top{ position:relative; padding:30px 24px 22px; text-align:center; background:radial-gradient(ellipse 80% 90% at 50% 0%, rgba(229,184,90,.28), transparent 70%), var(--navy-deep); border-bottom:1px solid rgba(255,255,255,.1); }
+  .ticket-top h3{ font-size:34px; font-weight:900; text-transform:uppercase; }
+  .ticket-top .exp{ display:block; font-size:12px; font-weight:700; letter-spacing:.42em; text-transform:uppercase; color:rgba(255,255,255,.75); margin-top:6px; }
+  .price{ display:block; font-family:var(--font-heading); font-weight:900; font-size:52px; line-height:1; color:var(--gold-light); margin-top:16px; }
+  .price small{ font-size:22px; vertical-align:super; margin-right:2px; }
+  .price-note{ display:block; font-size:13px; color:var(--muted-dark); margin-top:6px; }
+  .ticket ul{ list-style:none; padding:22px 24px 6px; margin:0; display:flex; flex-direction:column; gap:10px; flex:1; }
+  .ticket li{ position:relative; padding-left:26px; font-size:14.5px; line-height:1.4; color:rgba(255,255,255,.9); }
+  .ticket li::before{ content:"✓"; position:absolute; left:0; top:0; color:var(--gold-light); font-weight:900; }
+  .ticket .buy{ padding:16px 24px 26px; text-align:center; }
+  .ticket .buy .btn{ width:100%; font-size:19px; padding:16px 20px 13px; }
+  .ticket--vip{ box-shadow:0 0 0 3px var(--ink), 0 0 0 5px var(--gold-bright), 0 30px 60px -24px rgba(10,10,34,.95); transform:translateY(-10px); }
+  .ribbon{ position:absolute; top:22px; right:-42px; transform:rotate(38deg); background:#C0392B; color:#fff; font-family:var(--font-heading); font-weight:900; font-size:13px; letter-spacing:.12em; padding:7px 48px 5px; box-shadow:0 6px 14px -6px rgba(0,0,0,.6); z-index:3; text-transform:uppercase; }
+  .ribbon--gold{ background:var(--gold-bright); color:var(--ink); }
+  .ticket .bonus{ margin:4px 24px 0; padding-top:12px; border-top:1px solid rgba(255,255,255,.12); font-family:var(--font-heading); font-weight:800; font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-light); text-align:center; }
+  .band--gold .fineprint{ color:rgba(10,10,34,.75); }
+  .seats-pill{ display:inline-block; margin-top:16px; background:var(--ink); color:var(--gold-light); font-weight:700; font-size:14px; padding:10px 18px; border-radius:999px; }
+
+  /* Reviews */
+  .band--white .head h2{ color:var(--navy); }
+  .band--white .head .tag{ display:block; font-family:var(--font-heading); font-weight:700; font-size:24px; color:var(--navy); margin-top:6px; }
+  .band--white .lead{ color:var(--muted); }
+  .quotes{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .quote{ display:flex; flex-direction:column; background:#fff; border:1px solid var(--line); border-radius:18px; padding:26px 24px; box-shadow:0 20px 40px -28px rgba(22,22,63,.5); }
+  .quote .who{ display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+  .quote .av{ width:46px; height:46px; border-radius:50%; flex:none; overflow:hidden; background:var(--navy); color:var(--gold-light); display:grid; place-items:center; font-family:var(--font-heading); font-weight:800; }
+  .quote .av img{ width:100%; height:100%; object-fit:cover; }
+  .quote .who b{ display:block; color:var(--navy); font-size:16px; }
+  .quote .who span{ font-size:12.5px; color:var(--muted); }
+  .quote p{ color:#33365A; font-size:15px; line-height:1.6; }
+  .quote p strong{ color:var(--navy); background:linear-gradient(transparent 60%, rgba(229,184,90,.45) 60%); }
+  .disclaimer{ text-align:center; font-size:12px; color:#8A8DA3; max-width:880px; margin:26px auto 0; font-style:italic; }
+  .band--white .video-wrap{ background:var(--navy-deep); }
+
+  /* Venue */
+  .venue{ display:grid; grid-template-columns:1fr 1fr; min-height:560px; background:var(--ink); }
+  .venue-info{ padding:80px 56px; display:flex; flex-direction:column; justify-content:center; }
+  .venue-info .eyebrow{ color:#fff; text-align:center; }
+  .venue-info h2{ text-align:center; font-size:clamp(28px,3.4vw,40px); font-weight:900; text-transform:uppercase; margin:10px 0 6px; }
+  .venue-info .addr{ text-align:center; color:var(--muted-dark); }
+  .venue-info h3{ font-size:20px; font-weight:800; text-transform:uppercase; color:var(--gold-light); margin:26px 0 4px; letter-spacing:.02em; }
+  .venue-info p{ color:rgba(255,255,255,.86); font-size:15px; }
+  .venue-photo{ position:relative; overflow:hidden; background:
+      radial-gradient(circle at 18% 72%, rgba(242,197,92,.55) 0 2px, transparent 3px), radial-gradient(circle at 28% 70%, rgba(242,197,92,.5) 0 2px, transparent 3px),
+      radial-gradient(circle at 44% 66%, rgba(242,197,92,.55) 0 2px, transparent 3px), radial-gradient(circle at 63% 69%, rgba(242,197,92,.5) 0 2px, transparent 3px),
+      radial-gradient(circle at 78% 64%, rgba(242,197,92,.55) 0 2px, transparent 3px), radial-gradient(circle at 88% 71%, rgba(242,197,92,.5) 0 2px, transparent 3px),
+      linear-gradient(180deg, #1A1A52 0%, #2A2A6E 45%, #0F0F33 62%, #1C1C55 100%); }
+  .venue-photo::before{ content:""; position:absolute; left:0; right:0; top:46%; height:20%; background:linear-gradient(180deg, #0A0A22, #14143E); clip-path:polygon(0 60%,6% 60%,6% 20%,14% 20%,14% 45%,22% 45%,22% 10%,34% 10%,34% 40%,44% 40%,44% 0,58% 0,58% 35%,66% 35%,66% 15%,78% 15%,78% 50%,86% 50%,86% 25%,96% 25%,96% 60%,100% 60%,100% 100%,0 100%); }
+  .venue-photo::after{ content:""; position:absolute; left:0; right:0; top:66%; bottom:0; background:repeating-linear-gradient(180deg, rgba(242,197,92,.10) 0 2px, transparent 2px 9px); }
+  .venue-photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; }
+  .pin{ position:absolute; z-index:2; left:50%; top:38%; transform:translate(-50%,-50%); width:170px; height:170px; border-radius:50% 50% 50% 0; rotate:-45deg; background:#fff; box-shadow:0 20px 40px -14px rgba(0,0,0,.6); display:grid; place-items:center; }
+  .pin span{ rotate:45deg; text-align:center; font-family:var(--font-heading); font-weight:900; color:var(--navy); font-size:22px; line-height:.95; }
+  .pin span small{ display:block; color:var(--gold-ink); font-size:11px; letter-spacing:.2em; margin-top:6px; }
+  .venue-tag{ position:absolute; z-index:2; left:0; right:0; bottom:20px; text-align:center; font-size:12px; color:rgba(255,255,255,.55); }
+
+  /* About */
+  .about{ display:grid; grid-template-columns:380px 1fr; gap:44px; align-items:center; }
+  .about .pic{ border-radius:22px; overflow:hidden; background:var(--gold); box-shadow:0 0 0 6px rgba(229,184,90,.18); }
+  .about .pic img{ width:100%; aspect-ratio:4/4.3; object-fit:cover; object-position:50% 25%; }
+  .about h2{ font-size:clamp(30px,4vw,44px); font-weight:900; text-transform:uppercase; }
+  .about h2 span{ color:var(--gold-light); }
+  .about p{ color:var(--muted-dark); margin-top:14px; }
+  .stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:28px; }
+  .stat{ text-align:center; border:1px solid rgba(229,184,90,.35); border-radius:16px; padding:16px 8px; background:rgba(229,184,90,.06); }
+  .stat b{ display:block; font-family:var(--font-heading); font-weight:900; font-size:34px; color:var(--gold-light); line-height:1; white-space:nowrap; }
+  .stat span{ display:block; font-size:12.5px; font-weight:600; color:var(--muted-dark); margin-top:6px; }
+
+  /* Photo wall */
+  .wall{ columns:5 180px; column-gap:10px; }
+  .wall > *{ break-inside:avoid; margin-bottom:10px; border-radius:12px; overflow:hidden; }
+  .wall .ph{ border-radius:12px; }
+  .wall .h1{ height:150px; } .wall .h2{ height:220px; } .wall .h3{ height:290px; }
+  .wall img{ width:100%; height:100%; object-fit:cover; }
+  .wall .spk-shot{ background:linear-gradient(180deg,var(--gold-bright),var(--gold) 50%,var(--navy)); display:flex; align-items:flex-end; justify-content:center; }
+  .wall .spk-shot img{ width:84%; height:auto; }
+
+  /* FAQ */
+  .faq{ max-width:860px; margin:0 auto; display:flex; flex-direction:column; gap:10px; }
+  .faq details{ background:var(--navy-deep); border:1px solid rgba(255,255,255,.1); border-radius:14px; }
+  .faq summary{ list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px; padding:20px 22px 17px; font-family:var(--font-heading); font-weight:800; font-size:19px; }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary::after{ content:"+"; flex:none; width:30px; height:30px; border-radius:8px; background:var(--gold); color:var(--ink); display:grid; place-items:center; font-family:var(--font-body); font-weight:800; font-size:20px; transition:transform .2s ease; }
+  .faq details[open] summary::after{ transform:rotate(45deg); }
+  .faq details p{ padding:0 22px 20px; color:var(--muted-dark); }
+
+  /* Final CTA */
+  .final{ position:relative; overflow:hidden; text-align:center; padding:96px 0; background:linear-gradient(180deg, rgba(10,10,34,.7), rgba(10,10,34,.92)), var(--navy); }
+  .final img.bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.35; }
+  .final .container{ position:relative; }
+  .final .eyebrow{ color:var(--gold-light); }
+  .final h2{ font-size:clamp(34px,5.6vw,64px); font-weight:900; text-transform:uppercase; margin:12px 0 10px; }
+  .final p{ color:var(--muted-dark); font-size:18px; }
+  .final p b{ color:#fff; }
+
+  /* Footer + sticky bar */
+  .footer{ background:#06061A; padding:46px 0 120px; text-align:center; color:rgba(255,255,255,.55); font-size:13px; }
+  .footer .wordmark{ display:inline-block; margin-bottom:16px; }
+  .footer p{ max-width:760px; margin:6px auto 0; }
+  .footer a{ color:rgba(255,255,255,.75); }
+  .sticky{ position:fixed; left:0; right:0; bottom:0; z-index:60; background:linear-gradient(90deg,var(--navy-deep),var(--navy-2),var(--navy-deep)); border-top:2px solid var(--gold); box-shadow:0 -12px 30px -12px rgba(0,0,0,.7); }
+  .sticky-inner{ display:flex; align-items:center; justify-content:center; gap:34px; padding:10px 20px; max-width:var(--container-w); margin:0 auto; }
+  .sticky .msg{ font-family:var(--font-heading); font-weight:900; font-size:16px; line-height:1.05; text-transform:uppercase; text-align:center; }
+  .sticky .msg span{ display:block; color:var(--gold-light); font-size:14px; }
+  .cd{ display:flex; gap:16px; align-items:baseline; }
+  .cd div{ display:flex; align-items:baseline; gap:4px; }
+  .cd b{ font-family:var(--font-heading); font-weight:800; font-size:30px; line-height:1; }
+  .cd span{ font-size:12px; color:var(--muted-dark); }
+
+  /* Bio modal */
+  .modal{ position:fixed; inset:0; z-index:100; display:none; align-items:center; justify-content:center; padding:20px; background:rgba(6,6,26,.82); backdrop-filter:blur(4px); }
+  .modal.open{ display:flex; }
+  .modal-card{ position:relative; width:100%; max-width:640px; max-height:86vh; overflow:auto; background:var(--navy-deep); border:1px solid rgba(229,184,90,.45); border-radius:22px; padding:30px; }
+  .modal-head{ display:flex; gap:18px; align-items:center; margin-bottom:16px; }
+  .modal-head .pic{ width:96px; height:96px; flex:none; border-radius:50%; background:linear-gradient(180deg,var(--gold-bright),var(--gold)); overflow:hidden; display:flex; align-items:flex-end; justify-content:center; }
+  .modal-head .pic img{ width:100%; }
+  .modal-head h3{ font-size:28px; font-weight:900; text-transform:uppercase; }
+  .modal-head span{ display:block; color:var(--gold-light); font-size:14px; font-weight:600; margin-top:4px; }
+  .modal-body p{ color:rgba(255,255,255,.86); font-size:15px; margin-bottom:12px; }
+  .modal-body .ig{ color:var(--gold-light); font-weight:700; font-size:14px; }
+  .modal-close{ position:absolute; top:14px; right:14px; width:38px; height:38px; border:none; border-radius:10px; background:var(--gold); color:var(--ink); font-size:22px; font-weight:800; cursor:pointer; }
+
+  @media (max-width: 960px){
+    .nav-links{ display:none; }
+    .hero-panel{ width:30%; opacity:.55; }
+    .intro,.about{ grid-template-columns:1fr; }
+    .collage{ grid-template-rows:150px 100px 150px; }
+    .speakers{ grid-template-columns:repeat(3,1fr); }
+    .tickets{ grid-template-columns:1fr; max-width:520px; }
+    .ticket--vip{ transform:none; }
+    .agenda,.quotes{ grid-template-columns:1fr; }
+    .venue{ grid-template-columns:1fr; }
+    .venue-photo{ min-height:360px; }
+    .about .pic{ max-width:380px; margin:0 auto; }
+  }
+  @media (max-width: 640px){
+    .band{ padding:64px 0; }
+    .hero{ padding-top:40px; }
+    .hero-panel{ display:none; }
+    .btn-gold{ font-size:18px; padding:17px 28px 14px; }
+    .faces-label{ font-size:11px; letter-spacing:.14em; border-radius:10px; }
+    .pillars,.tiles,.mosaic{ grid-template-columns:1fr; }
+    .speakers{ grid-template-columns:repeat(2,1fr); gap:20px 12px; }
+    .wordmark{ font-size:18px; }
+    .nav .btn-sm{ font-size:13px; padding:11px 16px 9px; }
+    .spk .name{ font-size:19px; margin:-46px 10px 0; }
+    .spk .role,.spk .more{ margin-left:10px; margin-right:10px; }
+    .host-banner{ grid-template-columns:1fr; padding:0 0 26px; background:linear-gradient(180deg, var(--gold) 0 250px, var(--ink) 250px); text-align:center; gap:16px; }
+    .host-banner img{ width:100%; height:280px; }
+    .host-banner > div{ padding:0 22px; }
+    .host-banner p{ margin:0 auto; }
+    .venue-info{ padding:56px 22px; }
+    .stats{ grid-template-columns:1fr; }
+    .sticky-inner{ gap:12px; justify-content:space-between; }
+    .sticky .msg{ display:none; }
+    .cd{ gap:8px; }
+    .cd b{ font-size:21px; }
+    .cd span{ font-size:10px; }
+    .sticky .btn{ font-size:13px; padding:11px 14px 9px; }
+    .pill-sq,.badge,.seats-pill{ border-radius:10px; }
+    .partner-row img{ height:40px; }
+    .ribbon{ font-size:11px; }
+  }
+</style>
+</head>
+<body>
+<div class="ev-root">
+
+<!-- ================= NAV + MARQUEE ================= -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="wordmark" href="#top">#BETONYOURSELF<small>IMMERSION 2026</small></a>
+    <div class="nav-links">
+      <a href="#about">About</a><a href="#lineup">Lineup</a><a href="#experience">Experience</a><a href="#tickets">Tickets</a><a href="#venue">Venue</a>
+    </div>
+    <a class="btn btn-gold btn-sm" href="#tickets">Get Tickets</a>
+  </div>
+</nav>
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>#BetOnYourself</span><span>★</span><span>October 14–16, 2026</span><span>★</span><span>The Artisan Hotel · Salem, NH</span><span>★</span><span>VIP capped at 30 seats</span><span>★</span><span>13 expert operators</span><span>★</span>
+    <span>#BetOnYourself</span><span>★</span><span>October 14–16, 2026</span><span>★</span><span>The Artisan Hotel · Salem, NH</span><span>★</span><span>VIP capped at 30 seats</span><span>★</span><span>13 expert operators</span><span>★</span>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-panel hero-panel--l" aria-hidden="true"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/michael-speaking.jpg" alt="" onerror="this.remove()"></div>
+  <div class="hero-panel hero-panel--r" aria-hidden="true"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/michael-headshot.jpg" alt="" onerror="this.remove()"></div>
+
+  <div class="hero-inner">
+    <span class="eyebrow presents">Michael Ketchen Presents</span>
+    <h1 class="title">
+      <span class="t1">#BetOnYourself</span>
+      <span class="t2">Real Estate Investor</span>
+      <span class="t3">Immersion</span>
+    </h1>
+    <p class="when">October 14–16, 2026</p>
+    <p class="where">The Artisan Hotel · Salem, NH · 40 min north of Boston</p>
+    <a class="btn btn-gold" href="#tickets">Get Your Ticket: From $597</a>
+    <p class="scarcity">Get in the arena. VIP is capped at 30 seats. Once they're gone, they're gone.</p>
+  </div>
+
+  <div class="faces">
+    <span class="faces-label">13 Operators · 1 Room</span>
+    <img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/collage-top.jpg" alt="Immersion speakers including Michael Ketchen" onerror="this.remove()">
+  </div>
+</section>
+
+<!-- ================= PARTNERS (replaces "As seen on") ================= -->
+<section class="partners" aria-label="Event partners">
+  <p class="eyebrow">In the arena with us</p>
+  <div class="partner-row">
+    <div class="presenting"><span>PRESENTING PARTNER</span><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/partner-leadstart.png" alt="LeadStart Marketing"></div>
+    <img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/partner-first-rate.png" alt="First-Rate Moving &amp; Storage">
+    <img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/partner-milahna.png" alt="Milahna Flooring">
+    <img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/partner-modish-dwellings.png" alt="Modish Dwellings Home Staging">
+    <img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/partner-affleck-financing.png" alt="Affleck Financing">
+    <img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/partner-jbs-corp.png" alt="JBS Corp">
+    <img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/partner-waz-homes.png" alt="WAZ Homes">
+    <img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/partner-team-goetz.png" alt="Team Goetz CrossCountry Mortgage">
+    <img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/partner-burgin-platner.png" alt="Burgin Platner Insurance">
+  </div>
+</section>
+
+<!-- ================= INTRO ================= -->
+<section class="band band--ink" id="about">
+  <div class="container">
+    <div class="intro">
+      <div>
+        <h2>Ready for the next level?</h2>
+        <p class="kicker">You don't need more information. You need the right room and proximity to the people who've already walked the path you're on.</p>
+        <p>Three days with operators who've actually done it, not internet gurus selling theory. You'll walk out:</p>
+        <ul class="icon-list">
+          <li><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5l4.5 9.2 10.1 1.5-7.3 7.1 1.7 10-9-4.7-9 4.7 1.7-10-7.3-7.1 10.1-1.5z"/></svg><span>With <b>real estate strategies that fund your dream life</b>, real time and financial freedom, not just another course</span></li>
+          <li><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="13" cy="14" r="5"/><circle cx="27" cy="14" r="5"/><path d="M4 33c0-6 4-10 9-10s9 4 9 10M18 33c0-6 4-10 9-10s9 4 9 10"/></svg><span>Finally in <b>the right circle</b> to push you to your next level</span></li>
+          <li><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 32h28M10 32V18M18 32V12M26 32V20M34 32V8"/></svg><span>Guided by <b>expert operators</b> who've actually done it, not theory</span></li>
+          <li><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4c4 6 8 9 8 16a8 8 0 01-16 0c0-4 2-6 3-8 1 3 3 4 5 4-2-5 0-9 0-12z"/></svg><span><b>Done playing small</b>, repeating last year and staying in the wrong circle</span></li>
+        </ul>
+        <p class="seen">If you just read that and felt seen…<span>This is your room.</span></p>
+      </div>
+      <div class="collage">
+        <div class="ph a"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/michael-speaking.jpg" alt="Michael Ketchen speaking with investors" onerror="this.remove()"></div>
+        <!-- [PLACEHOLDER: event photo: crowd / networking] -->
+        <div class="ph ph-empty b"><div><b>Event photo</b>Crowd or networking shot</div></div>
+        <div class="ph c" style="background:var(--gold)"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/michael-headshot.jpg" alt="Michael Ketchen" onerror="this.remove()"></div>
+        <!-- [PLACEHOLDER: event photo: stage / panel] -->
+        <div class="ph ph-empty d"><div><b>Event photo</b>Stage or panel shot</div></div>
+      </div>
+    </div>
+
+    <div class="video-wrap">
+      <div class="video">
+        <!-- [PLACEHOLDER: Wistia embed for the event promo video, replace WISTIA_MEDIA_ID] -->
+        <img class="poster" src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/immersion-banner.jpg" alt="" onerror="this.remove()">
+        <div class="play"><i></i></div>
+        <p class="cap">Watch: why Michael built the room he wishes he'd walked into 10 years ago</p>
+      </div>
+    </div>
+    <div class="cta-row"><a class="btn btn-gold" href="#tickets">Get Tickets</a></div>
+  </div>
+</section>
+
+<!-- ================= FOUR PILLARS ================= -->
+<section class="band band--gold">
+  <div class="container">
+    <div class="head">
+      <span class="pre">Walk out with</span>
+      <h2 class="h-xl">The Four Pillars</h2>
+      <span class="post">of a plan in motion and a network to support you</span>
+    </div>
+    <div class="pillars">
+      <div class="pillar"><span class="ghost">01</span><h3>Strategy</h3><p class="sub">High-level frameworks</p><p>The exact frameworks top investors use to scale: BRRRR, multifamily, flips, creative financing, STRs, RV parks, senior living and sober living you can deploy now.</p></div>
+      <div class="pillar"><span class="ghost">02</span><h3>Proximity</h3><p class="sub">Your network = your net worth</p><p>Get in the room with people already living the life you want. Your network becomes your net worth.</p></div>
+      <div class="pillar"><span class="ghost">03</span><h3>Belief</h3><p class="sub">Raise your standard</p><p>Proven experts and peers raise your standard of what's possible so you stop playing small and start executing.</p></div>
+      <div class="pillar"><span class="ghost">04</span><h3>Execution</h3><p class="sub">Momentum after Monday</p><p>Leave with a clear next step and the accountability to actually do it. Breakthroughs you'll feel long after the event.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CHOOSE YOUR EXPERIENCE (tiles) ================= -->
+<section class="band band--white" style="padding:64px 0">
+  <div class="container">
+    <div class="head" style="margin-bottom:26px">
+      <p style="color:var(--navy);font-size:18px">Whether you're buying your first door or scaling a portfolio, there's a seat for you.</p>
+      <h2 style="color:var(--gold-ink);font-size:clamp(26px,3.4vw,36px);font-weight:800;margin-top:4px">Choose Your Experience</h2>
+    </div>
+    <div class="tiles">
+      <a class="tile" href="#tickets"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/collage-bottom.jpg" alt="" onerror="this.remove()"><b>General</b><span>Admission · $597</span></a>
+      <a class="tile tile--vip" href="#tickets"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/michael-speaking.jpg" alt="" onerror="this.remove()"><span class="flag">30 seats</span><b>VIP</b><span>Experience · $1,999</span></a>
+      <a class="tile" href="#tickets"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/collage-top.jpg" alt="" onerror="this.remove()"><span class="flag">10 seats</span><b>Speaker Day</b><span>VIP add-on · +$999</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LINEUP ================= -->
+<section class="band band--stars" id="lineup">
+  <div class="container">
+    <div class="head">
+      <span class="eyebrow gold">13 expert operators</span>
+      <h2 class="h-xl">Your REI Mentor <span class="gold">Lineup</span></h2>
+      <p class="lead">No gurus, no fluff. Operators across every major strategy, in one room. Tap any speaker to read their story.</p>
+    </div>
+
+    <div class="speakers">
+      <button type="button" class="spk" data-bio-open>
+        <span class="pic"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-ketchen.png" alt="Michael Ketchen"></span>
+        <span class="name">Michael<br>Ketchen</span><span class="role">Host · Multi-Family, STR &amp; Hospitality</span><span class="more">Read bio</span>
+        <span class="bio"><p>From teacher to a $250M+ portfolio. Michael built the Bet On Yourself Immersion to be the room he wishes he'd walked into ten years ago: no gurus, no fluff, just operators who've actually done it.</p><p>Michael is the Co-Founder of Commonwealth Collective, a New Hampshire–based real estate investment firm with over $250 million in assets under management, as well as Co-Founder of Residents First Property Management Group and Commonwealth Hospitality Group. He is also the Co-Founder of The Vault Society and Bet On Yourself Education Co., where he teaches real estate, marketing, and mindset strategies to entrepreneurs and investors.</p><p>He is widely recognized as an expert in the BRRRR Method and creative financing, and has helped return more than $20 million in equity to investors. Michael is also the Co-Founder of Project 22:22, a nonprofit dedicated to eliminating veteran suicide and supporting those who have served.</p></span>
+      </button>
+      <button type="button" class="spk" data-bio-open>
+        <span class="pic"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-elefante.png" alt="Michael Elefante"></span>
+        <span class="name">Michael<br>Elefante</span><span class="role">Short-Term Rentals / Airbnb</span><span class="more">Read bio</span>
+        <span class="bio"><p>Bestselling author and investor with a $30M+ portfolio of 14 luxury vacation rentals generating over $3M in annual rental income. Founder of BNB Investor Academy, where he has helped 3,000+ investors acquire over $1 billion in real estate.</p><p>Co-Founder of The Rise Collective, a portfolio of companies including a national property management firm overseeing 650+ luxury rentals and $80–100M in annual bookings, and Somerled Designs, the country's leading short-term-rental interior design firm. His work has been featured on Fox Business and Business Insider.</p><p class="ig">Instagram: @melefante6</p></span>
+      </button>
+      <button type="button" class="spk" data-bio-open>
+        <span class="pic"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-schwartz.png" alt="Collin Schwartz"></span>
+        <span class="name">Collin<br>Schwartz</span><span class="role">Multi-Family · Liquid Lending &amp; Titan Mastermind</span><span class="more">Read bio</span>
+        <span class="bio"><p>Collin was sitting in an IT cubicle in January 2017 when Rich Dad Poor Dad flipped a switch. He wrote 191 handwritten letters to property owners, landed his first deals, quit the cubicle, and never looked back.</p><p>Today he owns 3,500 units and is an owner in Point Guard Omaha, his vertical integration arm. He co-founded Liquid Lending Solutions, a hard money fund that has done over $120 million in loans, and runs Acreage Brothers, a fix-and-flip operation with his partner Tyler. He also co-founded Titan Mastermind on the belief that the most important asset in any business is the health of its founder.</p><p class="ig">Instagram: @collincschwartz</p></span>
+      </button>
+      <button type="button" class="spk" data-bio-open>
+        <span class="pic"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-cathcart.png" alt="Cam Cathcart"></span>
+        <span class="name">Cam<br>Cathcart</span><span class="role">Single Family, Flips &amp; BRRRR</span><span class="more">Read bio</span>
+        <span class="bio"><p>Cam was a pastor living paycheck to paycheck when his daughter had a severe allergic reaction. The hospital bill came to $15,000, money he didn't have. That was the moment he decided his family needed a different financial future.</p><p>He and his wife moved in with her parents to scrape together a first deal, then bought in St. Louis and ran the BRRRR playbook. That first house has since compounded into a $50M portfolio, built on relationships and a buy box he never drifted from: three- and four-bedroom homes between $150K and $350K. He acquires, she operates.</p></span>
+      </button>
+      <button type="button" class="spk" data-bio-open>
+        <span class="pic"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-miller.png" alt="Micheal Miller"></span>
+        <span class="name">Micheal<br>Miller</span><span class="role">Creative Finance · The Dead Presidents Podcast</span><span class="more">Read bio</span>
+        <span class="bio"><p>Micheal is the guy people call when the conventional financing falls through. Twelve years in, he has built his reputation on creative finance (seller financing, flexible loan terms, alternative lending), structuring the deals that shouldn't have worked and making them work anyway.</p><p>In the last two years alone he has purchased $15 million in single-family and small multifamily, all structured creatively. Alongside his wife, he co-founded Marked, a nonprofit protecting underprivileged children in Mexico that has served more than one million meals. He is also the host of The Dead Presidents Podcast.</p></span>
+      </button>
+      <button type="button" class="spk" data-bio-open>
+        <span class="pic"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-bishop.png" alt="Ian Bishop"></span>
+        <span class="name">Ian<br>Bishop</span><span class="role">Operations · The RevOps Coach</span><span class="more">Read bio</span>
+        <span class="bio"><p>Ian is The RevOps Coach. He helps owners of $2M+ companies cut their hours by installing the systems that let the business grow without them, so they can spend more time with their families and doing what they love. Most of the year he lives in Maui with his high school sweetheart Bianca and their four sons.</p><p>If you're building a portfolio that owns you instead of the other way around, Ian is the one to talk to.</p><p class="ig">Instagram: @therevopscoach · therevopscoach.com</p></span>
+      </button>
+      <button type="button" class="spk" data-bio-open>
+        <span class="pic"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-hitchcock.png" alt="Matthew Hitchcock"></span>
+        <span class="name">Matthew<br>Hitchcock</span><span class="role">Multi-Family &amp; Hospitality</span><span class="more">Read bio</span>
+        <span class="bio"><p>Matthew is a seasoned real estate investor and entrepreneur who began in the Merrimack Valley market of Massachusetts. He is the co-founder of Commonwealth Collective, a New Hampshire–based real estate investment firm with over $250 million in assets under management, as well as Co-Founder of Residents First Property Management Group and Commonwealth Hospitality Group.</p><p>His background in sales, operations and talent management shapes his strategic approach to acquisition, management and marketing. Matthew is also the Co-Founder of The Vault Society, a luxury co-working space in Windham, NH.</p></span>
+      </button>
+      <button type="button" class="spk" data-bio-open>
+        <span class="pic"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-kempf.png" alt="Zander Kempf"></span>
+        <span class="name">Zander<br>Kempf</span><span class="role">Glamping · RV Parks &amp; Outdoor Hospitality</span><span class="more">Read bio</span>
+        <span class="bio"><p>Zander leads a $60M portfolio of five glamping and hot springs resorts across the Western U.S. A former Army officer and paratrooper with the 82nd Airborne, including a combat deployment to Iraq, he bought his first deal, a $45,000 house in Oklahoma City, sight unseen.</p><p>He scaled that into 23 apartment buildings, then made the contrarian call to sell the entire multifamily portfolio at the peak of COVID and go all in on outdoor hospitality. 55+ projects in 9 years. Financially free at 27.</p><p class="ig">Instagram: @zanderkempf · clearsummitinvestments.com</p></span>
+      </button>
+      <button type="button" class="spk" data-bio-open>
+        <span class="pic"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-gane.png" alt="Geoff Gane"></span>
+        <span class="name">Geoff<br>Gane</span><span class="role">Senior Living · CEO, OakBrook Senior Living</span><span class="more">Read bio</span>
+        <span class="bio"><p>Geoffrey Gane is a serial entrepreneur who has built and scaled over a dozen businesses, with two successful exits, while independently amassing a high-performing real estate portfolio. He's now CEO of OakBrook Senior Living, a company redefining the senior care sector.</p><p>A Division 1 football player and Harvard graduate, Geoffrey's success was built on lessons learned from failures that would have made most people quit.</p></span>
+      </button>
+      <button type="button" class="spk" data-bio-open>
+        <span class="pic"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-murray.png" alt="Bill Murray"></span>
+        <span class="name">Bill<br>Murray</span><span class="role">Multi-Family · Co-Founder, KB4 Property Group</span><span class="more">Read bio</span>
+        <span class="bio"><p>Bill Murray is a partner and founding member of KB4 Property Group LLC, a real estate investment firm in New Hampshire. His passion for entrepreneurship started at his last company, which he helped grow from $6 million to $75 million.</p><p>Driven by the belief that real estate is a powerful wealth-building tool, he now manages a diverse portfolio of over 55 units and counting, and is always looking to grow his network, because this is a team sport.</p></span>
+      </button>
+      <button type="button" class="spk" data-bio-open>
+        <span class="pic"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-ragnarsson.png" alt="Axel Ragnarsson"></span>
+        <span class="name">Axel<br>Ragnarsson</span><span class="role">Multi-Family · Aligned Real Estate Partners</span><span class="more">Read bio</span>
+        <span class="bio"><p>A full-time real estate investor since 2017, Axel is the founder of Aligned Real Estate Partners, which acquires and operates multifamily properties throughout NH, RI and FL. The firm owns or is a general partner in 550+ units and has been a principal party in $90M+ in transactions, closing 300+ units direct-to-seller in the last three years alone.</p><p>He is also a founding partner of Blue Door Living, a New Hampshire property management company managing over 850 units, and hosts The Multifamily Wealth Podcast.</p><p class="ig">Instagram: @multifamilywealth · alignedrep.com</p></span>
+      </button>
+      <button type="button" class="spk" data-bio-open>
+        <span class="pic"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-matias.png" alt="Magdiel Matias"></span>
+        <span class="name">Magdiel<br>Matias</span><span class="role">Multi-Family · Matias Companies</span><span class="more">Read bio</span>
+        <span class="bio"><p>Mags was born in the Dominican Republic and came to the U.S. at six. He grew up in Haverhill, Massachusetts, had his own newspaper route by twelve, became a citizen at 21, and earned his finance degree from UMass Lowell, then turned down corporate America to work with troubled youth instead.</p><p>Real estate found him when his brothers said, "We're going in." When he wanted to scale, he studied what Mike Ketchen was building and joined the coaching program. Immigrant roots, discipline, education and service carried him to a multifamily portfolio of almost $10M.</p></span>
+      </button>
+      <button type="button" class="spk" data-bio-open>
+        <span class="pic"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-francke.png" alt="Grant Francke"></span>
+        <span class="name">Grant<br>Francke</span><span class="role">Self-Managed Multi-Family · Author</span><span class="more">Read bio</span>
+        <span class="bio"><p>Grant Francke is a real estate investor with $23 million in assets under management, and he self-manages every door of it across Nebraska. No third-party manager, no big team to hide behind: just systems sharp enough to run a portfolio that size solo.</p><p>He's the author of The Unlikely Investor and The Boring Landlord, practical, systems-driven playbooks for building real financial independence.</p><p class="ig">Instagram: @grant.francke</p></span>
+      </button>
+      <button type="button" class="spk" data-bio-open>
+        <span class="pic"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-bourgeois.png" alt="Mike Bougie Bourgeois"></span>
+        <span class="name">Mike "Bougie"<br>Bourgeois</span><span class="role">Master of Ceremonies · Bougie Realty</span><span class="more">Read bio</span>
+        <span class="bio"><p>Your MC for the weekend. A self-taught investor, Mike built and managed his own residential portfolio while running a 15-year international career in IT and business leadership, including several years working in Europe. Real estate gave him the financial freedom to leave the corporate world and build a business of his own.</p><p>Today he owns and operates long-term buy-and-hold rentals across MA and Southern NH, and was named Rookie of the Year by the Northeast Association of REALTORS® in his first full year in sales.</p><p class="ig">Instagram: @bougierealty · bougierealty.com</p></span>
+      </button>
+    </div>
+
+    <div class="host-banner">
+      <img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/michael-headshot.jpg" alt="Michael Ketchen" onerror="this.remove()">
+      <div>
+        <span class="eyebrow">Your host</span>
+        <h3>From teacher to <span class="gold">$250M+</span></h3>
+        <p>Michael Ketchen opens Day One with the story and the mindset that took him from a $100K public school teacher to a $250M+ portfolio, then hands the stage to operators from pastor, sales, IT and military backgrounds.</p>
+      </div>
+    </div>
+    <p class="fineprint">*Speaker lineup subject to change.</p>
+  </div>
+</section>
+
+<!-- ================= THE EXPERIENCE + AGENDA ================= -->
+<section class="band band--cream" id="experience">
+  <div class="container">
+    <div class="head">
+      <h2 class="h-xl">The <span style="color:var(--gold-ink)">Experience</span></h2>
+      <p class="lead">This isn't a hype event you forget by Monday. The goal is transformation, not for us to lecture you.</p>
+    </div>
+    <div class="mosaic">
+      <div class="mtile"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/michael-speaking.jpg" alt="" style="object-position:42% 30%" onerror="this.remove()"><b>This is an arena</b><span>Not a classroom</span></div>
+      <div class="mtile"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/collage-top.jpg" alt="" onerror="this.remove()"><b>This is proximity</b><span>Not a lecture</span></div>
+      <div class="mtile"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/collage-bottom.jpg" alt="" onerror="this.remove()"><b>This is a community</b><span>Not a crowd</span></div>
+    </div>
+
+    <div class="agenda">
+      <div class="day day--vip">
+        <span class="eyebrow">Wednesday · Oct 14</span>
+        <h3>Speaker Day</h3>
+        <p class="meta"><b>6:00 – 8:00 PM</b> · The Vault Society, Windham NH</p>
+        <span class="badge badge--solid">VIP ticket holders only · 10 seats</span>
+        <ul>
+          <li>Speakers, title sponsor + VIP only at The Vault in Windham, NH</li>
+          <li>Hang with our speakers and get in an in-depth Q&amp;A</li>
+          <li>Real conversations with the speakers before the main event kicks off</li>
+          <li>Ask the questions you'd never ask from a seat in a room of hundreds</li>
+          <li>Catered dinner</li>
+          <li>VIP-only upgrade (<b>$999</b>), capped at 10 seats</li>
+        </ul>
+      </div>
+      <div class="day">
+        <span class="eyebrow">Thursday · Oct 15</span>
+        <h3>Day One: Main Stage</h3>
+        <p class="meta"><b>8:45 AM – 4:15 PM</b> · The Artisan Hotel at Tuscan Village, Salem NH</p>
+        <span class="badge">GA &amp; VIP</span>
+        <ul>
+          <li><b>Michael Ketchen:</b> from teacher to $250M+ portfolio, the story &amp; the mindset that got him here</li>
+          <li>Speakers from pastor, sales, IT and military backgrounds</li>
+          <li>Investor panels: multifamily, RV parks, STR, sober living, senior living, flips and more</li>
+          <li>STR strategy with Michael Elefante</li>
+          <li>Breakout workshops for value-add BRRRR by investor level</li>
+          <li>Networking built into the day + VIP breakouts with speakers</li>
+          <li><b>Evening: VIP Party, 5:30–7:30 PM.</b> New money vibes</li>
+        </ul>
+      </div>
+      <div class="day">
+        <span class="eyebrow">Friday · Oct 16</span>
+        <h3>Day Two: Main Stage</h3>
+        <p class="meta"><b>9:00 AM – 4:00 PM</b> · The Artisan Hotel at Tuscan Village, Salem NH</p>
+        <span class="badge">GA &amp; VIP</span>
+        <ul>
+          <li>Mindset work: what are we really doing all of this for?</li>
+          <li>Creative financing</li>
+          <li>Deal analysis, Alex Hormozi style</li>
+          <li>Networking built into the day</li>
+          <li>VIP breakouts with our speakers</li>
+          <li>Scaling workshops with active operators</li>
+          <li>Speaker Q&amp;A panel &amp; send-off</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fineprint">*Agenda subject to refinement for the most actionable experience we can give you.</p>
+    <div class="after"><p class="pre">Don't miss your moment.</p><b>Get in the arena.</b></div>
+  </div>
+</section>
+
+<!-- ================= TICKETS ================= -->
+<section class="band band--gold" id="tickets">
+  <div class="container">
+    <div class="head">
+      <span class="eyebrow" style="letter-spacing:.5em">Tickets</span>
+      <h2 class="h-lg" style="color:var(--ink);margin-top:6px">Choose Your Immersion Experience</h2>
+      <span class="seats-pill">⚡ VIP capped at 30 seats · Speaker Day capped at 10</span>
+    </div>
+    <div class="tickets">
+      <div class="ticket">
+        <div class="ticket-top"><h3>General</h3><span class="exp">Admission</span><span class="price"><small>$</small>597</span><span class="price-note">Oct 15 &amp; 16 · Main stage</span></div>
+        <ul>
+          <li>2 days of main-stage sessions, October 15th &amp; 16th</li>
+          <li>Investor panels &amp; expert frameworks</li>
+          <li>Breakout workshops by experience level</li>
+          <li>Networking with the full community</li>
+          <li>Live strategy you can deploy immediately</li>
+          <li>Refreshments all day</li>
+        </ul>
+        <div class="buy"><a class="btn btn-gold" href="#" data-checkout="ga">Buy Tickets</a></div>
+      </div>
+      <div class="ticket ticket--vip">
+        <span class="ribbon ribbon--gold">Only 15 left</span>
+        <div class="ticket-top"><h3>VIP</h3><span class="exp">Experience</span><span class="price"><small>$</small>1,999</span><span class="price-note">Capped at 30 seats</span></div>
+        <ul>
+          <li>Everything in General Admission</li>
+          <li>Front-row priority reserved seating</li>
+          <li>Hot seat coaching &amp; deal analyzing</li>
+          <li>Session recordings after the event</li>
+          <li>Direct speaker access &amp; connection time</li>
+          <li>Small-group mastermind breakouts on STRs, tax benefits and leasing</li>
+          <li>VIP breakfast &amp; lunch each day + working lunch with speakers</li>
+          <li>VIP Party: Thursday, Oct 15</li>
+        </ul>
+        <p class="bonus">Eligible to add Speaker Day</p>
+        <div class="buy"><a class="btn btn-gold" href="#" data-checkout="vip">Go VIP</a></div>
+      </div>
+      <div class="ticket">
+        <div class="ticket-top"><span class="badge badge--solid" style="margin:0 0 12px">5 seats left · VIP only</span><h3>Speaker Day</h3><span class="exp">VIP Add-On</span><span class="price"><small>+$</small>999</span><span class="price-note">Wed, Oct 14 · 10 seats</span></div>
+        <ul>
+          <li>Casual open-house vibes at The Vault Society</li>
+          <li>No stage, no script: just you and the speakers</li>
+          <li>A room small enough to actually talk</li>
+          <li>Ask the questions you'd never ask in front of a large audience</li>
+          <li>Catered dinner</li>
+          <li>Available to VIP ticket holders only</li>
+        </ul>
+        <div class="buy"><a class="btn btn-gold" href="#" data-checkout="speakerDay">Add Speaker Day</a></div>
+      </div>
+    </div>
+    <p class="fineprint" style="margin-top:30px">No refunds. #BetOnYourself or don't come at all. Please read our <a href="[PLACEHOLDER: terms URL]" style="color:inherit">Terms &amp; Conditions</a> before purchasing.</p>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="band band--white">
+  <div class="container">
+    <div class="head">
+      <h2 class="h-lg">Real people. Real results.</h2>
+      <span class="tag">From people who bet on themselves, and who'll be in the room with you</span>
+    </div>
+    <div class="quotes">
+      <div class="quote">
+        <div class="who"><span class="av">TB</span><div><b>Tyler B.</b><span>Bet On Yourself member</span></div></div>
+        <p>"Mike has pushed me beyond limits I didn't know I had. His mentorship is not for the weak. Since working with Mike, I've <strong>doubled my portfolio</strong>, learned how to raise capital, and am now on pace to create over $2 million in value through value-add projects and flips this year. The biggest milestone of all is that next month <strong>I'll be leaving my W-2 job</strong> to focus on real estate full-time."</p>
+      </div>
+      <div class="quote">
+        <div class="who"><span class="av"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-murray.png" alt="Bill M." onerror="this.remove()"></span><div><b>Bill M.</b><span>Co-founder, KB4 Property Group</span></div></div>
+        <p>"Mike Ketchen's coaching program has been a transformative experience for my real estate investing journey. Since working with Mike, we have <strong>tripled in size</strong>, went through three full cycle deals, and <strong>quadrupled our net worth</strong>. If you want to propel your real estate investing forward, Mike's coaching is a must!"</p>
+      </div>
+      <div class="quote">
+        <div class="who"><span class="av"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-matias.png" alt="Magdiel M." onerror="this.remove()"></span><div><b>Magdiel M.</b><span>Agent &amp; investor</span></div></div>
+        <p>"Since I started working with Michael, I've gone from owning one fourplex to being on track to <strong>adding 32 more units this year</strong>, utilizing a mix of seller financing and conventional financing. The biggest lesson Michael has taught me is <strong>the time value of money</strong>."</p>
+      </div>
+    </div>
+    <div class="video-wrap">
+      <div class="video">
+        <!-- [PLACEHOLDER: Wistia embed for the member testimonial video, replace WISTIA_MEDIA_ID] -->
+        <div class="play"><i></i></div>
+        <p class="cap">Member story: hear it from someone who was in the room</p>
+      </div>
+    </div>
+    <p class="disclaimer">*These experiences are not typical and are not a guarantee of your success. Your background, education, strategy and effort all affect your results.</p>
+  </div>
+</section>
+
+<!-- ================= VENUE ================= -->
+<section class="venue" id="venue">
+  <div class="venue-info">
+    <span class="eyebrow">V e n u e</span>
+    <h2>The Artisan Hotel at Tuscan Village</h2>
+    <p class="addr">Salem, New Hampshire · 40 minutes north of Boston</p>
+    <h3>Getting there</h3>
+    <p>Fly into Boston Logan (BOS), about 40 min away, or Manchester Boston Regional Airport (MHT), about 25 min away.</p>
+    <h3>Where to stay</h3>
+    <p>On-site hotel at The Artisan Hotel, with walkable dining and shops surrounding the venue. Booking details and any room block are shared after registration.</p>
+    <h3>VIP Party &amp; Speaker Day</h3>
+    <p>The Vault Society, 57 Range Rd, Windham, NH, about 10 min from The Artisan Hotel.</p>
+  </div>
+  <div class="venue-photo">
+    <!-- [PLACEHOLDER: The Artisan Hotel / Tuscan Village photo; add <img src="..."> here] -->
+    <div class="pin"><span>SALEM<br>NH<small>OCT 14–16</small></span></div>
+    <p class="venue-tag">The Artisan Hotel · Tuscan Village</p>
+  </div>
+</section>
+
+<!-- ================= ABOUT MICHAEL ================= -->
+<section class="band band--navy">
+  <div class="container about">
+    <div class="pic"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/michael-headshot.jpg" alt="Michael Ketchen" onerror="this.remove()"></div>
+    <div>
+      <span class="eyebrow gold">About your host</span>
+      <h2 style="margin-top:8px">Michael <span>Ketchen</span></h2>
+      <p>Co-Founder of Commonwealth Collective, a New Hampshire–based real estate investment firm with <b style="color:#fff">over $250 million in assets under management</b>, plus Residents First Property Management Group, Commonwealth Hospitality Group, The Vault Society and Bet On Yourself Education Co.</p>
+      <p>Widely recognized for the BRRRR Method and creative financing, he has helped return <b style="color:#fff">more than $20 million in equity</b> to investors. He's also Co-Founder of Project 22:22, a nonprofit dedicated to eliminating veteran suicide.</p>
+      <p>Bet On Yourself isn't about staying comfortable. It's about getting in the arena, surrounding yourself with people who've done it, and building the kind of portfolio that buys back your time so you can love on the people who matter most.</p>
+      <div class="stats">
+        <div class="stat"><b>3 Days</b><span>Immersion</span></div>
+        <div class="stat"><b>13</b><span>Expert speakers</span></div>
+        <div class="stat"><b>1</b><span>Community that changes everything</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PHOTO WALL ================= -->
+<section class="band band--ink">
+  <div class="container">
+    <div class="head"><h2 class="h-lg">Are you ready to <span class="gold">bet on yourself?</span></h2></div>
+    <!-- Photo wall: swap the .ph-empty tiles for real event photos as they come in. -->
+    <div class="wall">
+      <div class="h3"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/michael-speaking.jpg" alt="Michael Ketchen speaking" style="object-position:42% 30%" onerror="this.remove()"></div>
+      <div class="ph ph-empty h1"><div><b>Event photo</b></div></div>
+      <div class="spk-shot h2"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-elefante.png" alt="Michael Elefante"></div>
+      <div class="ph ph-empty h2"><div><b>Event photo</b></div></div>
+      <div class="h1" style="background:var(--navy)"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/collage-bottom.jpg" alt="Immersion speakers" onerror="this.remove()"></div>
+      <div class="spk-shot h2"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-kempf.png" alt="Zander Kempf"></div>
+      <div class="ph ph-empty h3"><div><b>Event photo</b></div></div>
+      <div class="h2" style="background:var(--gold)"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/michael-headshot.jpg" alt="Michael Ketchen" style="object-position:50% 25%" onerror="this.remove()"></div>
+      <div class="ph ph-empty h1"><div><b>Event photo</b></div></div>
+      <div class="spk-shot h2"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-schwartz.png" alt="Collin Schwartz"></div>
+      <div class="h1" style="background:var(--navy)"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/collage-top.jpg" alt="Immersion speakers" onerror="this.remove()"></div>
+      <div class="ph ph-empty h2"><div><b>Event photo</b></div></div>
+      <div class="spk-shot h2"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-cathcart.png" alt="Cam Cathcart"></div>
+      <div class="ph ph-empty h3"><div><b>Event photo</b></div></div>
+      <div class="spk-shot h1" style="height:220px"><img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/speaker-ragnarsson.png" alt="Axel Ragnarsson"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="band band--navy" style="padding-top:70px">
+  <div class="container">
+    <div class="head"><h2 class="h-lg">Frequently asked questions</h2></div>
+    <div class="faq">
+      <details><summary>Who is this event for?</summary><p>Investors serious about building real estate strategies that create true time and financial freedom, whether you're buying your first door or scaling a portfolio. If you're ready for the next level and want the right room to get you there, this is for you.</p></details>
+      <details><summary>What are the ticket tiers?</summary><p>General Admission ($597): both main-stage days (Thu Oct 15 &amp; Fri Oct 16), investor panels, breakout workshops by experience level and networking. VIP ($1,999, capped at 30): everything in GA plus front-row seating, meals, a VIP-only lunch with the speakers, session recordings, direct speaker access, small-group mastermind breakouts and the VIP Party. Speaker Day (+$999): an add-on exclusively for VIP holders, capped at 10.</p></details>
+      <details><summary>What is Speaker Day, and how do I get in?</summary><p>An intimate add-on on Wednesday, Oct 14, the day before the Immersion kicks off. Casual open-house vibes at The Vault in Windham, NH (10 minutes from The Artisan Hotel): no stage, no script, just a small room with the speakers. It's a $999 upgrade available exclusively to VIP ticket holders and capped at 10 seats.</p></details>
+      <details><summary>Why is VIP capped, and is it worth it?</summary><p>The transformation happens in proximity. VIP is intentionally capped at 30 seats so you get real access to the speakers and a smaller-room mastermind experience. Once the 30 are gone, that's it for 2026.</p></details>
+      <details><summary>Do I need experience to attend?</summary><p>No. Breakouts are organized by level, from "zero to 6 doors" beginner tracks to advanced scaling and operations.</p></details>
+      <details><summary>Where should I stay?</summary><p>The Artisan Hotel and Tuscan Village in Salem, NH offer on-site lodging. Booking details and any room block will be shared after registration.</p></details>
+      <details><summary>What's the refund policy?</summary><p>No refunds. #BetOnYourself or don't come at all.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="final">
+  <img class="bg" src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/michael-speaking.jpg" alt="" onerror="this.remove()">
+  <div class="container">
+    <span class="eyebrow">The year you bet on yourself</span>
+    <h2>Get in the arena.</h2>
+    <p>October 14–16, 2026 · The Vault, Windham NH &amp; <b>The Artisan Hotel, Salem NH</b></p>
+    <p style="margin-top:6px">The room is filling. Your next level is on the other side of this decision.</p>
+    <div class="cta-row" style="margin-top:30px"><a class="btn btn-gold" href="#tickets">Get Your Ticket: From $597</a></div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <a class="wordmark" href="#top">#BETONYOURSELF<small>IMMERSION 2026</small></a>
+  <p>Michael Ketchen · Bet On Yourself Education Co. · <a href="[PLACEHOLDER: terms URL]">Terms &amp; Conditions</a> · <a href="[PLACEHOLDER: privacy URL]">Privacy Policy</a></p>
+  <p>Results are not typical and are not a guarantee. Real estate investing involves risk. This site is not part of or endorsed by Facebook / Meta Platforms, Inc.</p>
+  <p>&copy; <span data-year>2026</span> Bet On Yourself Education Co. All rights reserved.</p>
+</footer>
+
+<!-- Sticky ticket bar -->
+<div class="sticky">
+  <div class="sticky-inner">
+    <p class="msg">VIP capped at 30<span>Oct 14–16 · Salem, NH</span></p>
+    <div class="cd" data-countdown>
+      <div><b data-cd="d">00</b><span>Days</span></div>
+      <div><b data-cd="h">00</b><span>Hours</span></div>
+      <div><b data-cd="m">00</b><span>Min</span></div>
+      <div><b data-cd="s">00</b><span>Sec</span></div>
+    </div>
+    <a class="btn btn-gold btn-sm" href="#tickets">Get Tickets</a>
+  </div>
+</div>
+
+<!-- Speaker bio modal -->
+<div class="modal" id="bio-modal" role="dialog" aria-modal="true" aria-labelledby="bio-name">
+  <div class="modal-card">
+    <button type="button" class="modal-close" aria-label="Close">×</button>
+    <div class="modal-head"><span class="pic" id="bio-pic"></span><div><h3 id="bio-name"></h3><span id="bio-role"></span></div></div>
+    <div class="modal-body" id="bio-body"></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+/* ======================= FUNNEL CONFIG ======================= */
+var FUNNEL_CONFIG = {
+  // Countdown target: Speaker Day kickoff (EDT, -04:00).
+  eventISO: "2026-10-14T18:00:00-04:00",
+  // Checkout links for each ticket button.
+  checkout: {
+    ga: "[PLACEHOLDER: GA checkout URL]",
+    vip: "[PLACEHOLDER: VIP checkout URL]",
+    speakerDay: "[PLACEHOLDER: Speaker Day checkout URL]"
+  }
+};
+/* ============================================================= */
+
+(function(){
+  document.querySelectorAll('[data-year]').forEach(function(el){ el.textContent = new Date().getFullYear(); });
+
+  // Countdown
+  var target = new Date(FUNNEL_CONFIG.eventISO).getTime();
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function tick(){
+    var diff = Math.max(0, target - Date.now());
+    var v = { d: Math.floor(diff / 864e5), h: Math.floor(diff % 864e5 / 36e5), m: Math.floor(diff % 36e5 / 6e4), s: Math.floor(diff % 6e4 / 1e3) };
+    document.querySelectorAll('[data-countdown]').forEach(function(b){
+      Object.keys(v).forEach(function(k){ b.querySelector('[data-cd="' + k + '"]').textContent = pad(v[k]); });
+    });
+  }
+  tick(); setInterval(tick, 1000);
+
+  // Checkout buttons
+  document.querySelectorAll('[data-checkout]').forEach(function(a){
+    var url = FUNNEL_CONFIG.checkout[a.getAttribute('data-checkout')];
+    if (url && url.charAt(0) !== '[') a.href = url;
+  });
+
+  // Speaker bio modal
+  var modal = document.getElementById('bio-modal');
+  function close(){ modal.classList.remove('open'); document.body.style.overflow = ''; }
+  document.querySelectorAll('[data-bio-open]').forEach(function(card){
+    card.addEventListener('click', function(){
+      var img = card.querySelector('.pic img');
+      document.getElementById('bio-pic').innerHTML = img ? '<img src="' + img.src + '" alt="">' : '';
+      document.getElementById('bio-name').textContent = card.querySelector('.name').innerHTML.replace(/<br\s*\/?>/g, ' ');
+      document.getElementById('bio-role').textContent = card.querySelector('.role').textContent;
+      document.getElementById('bio-body').innerHTML = card.querySelector('.bio').innerHTML;
+      modal.classList.add('open'); document.body.style.overflow = 'hidden';
+    });
+  });
+  modal.querySelector('.modal-close').addEventListener('click', close);
+  modal.addEventListener('click', function(e){ if (e.target === modal) close(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+})();
+</script>
+</body>
+</html>

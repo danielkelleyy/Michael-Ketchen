@@ -94,3 +94,11 @@ Pulled from michaelketchen.com: navy `#16163F` / `#0E0E2C`, gold `#D9A02F` / `#E
 - [ ] Privacy policy + terms URLs (footer placeholders)
 
 Search every file for `[PLACEHOLDER` to find each slot.
+
+## Event page: `pages/immersion.html`
+
+A redesign of Michael's #BetOnYourself Real Estate Investor Immersion page (Oct 14–16, 2026), using the same content as michaelketchen.com/bet-on-yourself-immersion, restyled after the Life Surge event page in Michael's navy/gold.
+
+- **Sections:** sticky nav + marquee, cinematic hero, partner logo strip, intro, Four Pillars, experience tiles, 13-speaker lineup with bio popups, host banner, The Experience + 3-day agenda, tickets (GA / VIP / Speaker Day), testimonials, venue, about Michael, photo wall, FAQ, final CTA, sticky countdown bar.
+- **Images:** `assets/immersion/` holds speaker cutouts, collage strips and partner logos, cropped from a screenshot of his current page. Re-host in GHL before launch.
+- **To fill:** the three checkout URLs (`FUNNEL_CONFIG.checkout`), the promo and testimonial videos, real event photos (every tile labelled "Event photo"), a venue photo, and the terms/privacy URLs.
