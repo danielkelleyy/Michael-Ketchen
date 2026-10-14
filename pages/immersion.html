@@ -290,11 +290,11 @@
       linear-gradient(180deg, #1A1A52 0%, #2A2A6E 45%, #0F0F33 62%, #1C1C55 100%); }
   .venue-photo::before{ content:""; position:absolute; left:0; right:0; top:46%; height:20%; background:linear-gradient(180deg, #0A0A22, #14143E); clip-path:polygon(0 60%,6% 60%,6% 20%,14% 20%,14% 45%,22% 45%,22% 10%,34% 10%,34% 40%,44% 40%,44% 0,58% 0,58% 35%,66% 35%,66% 15%,78% 15%,78% 50%,86% 50%,86% 25%,96% 25%,96% 60%,100% 60%,100% 100%,0 100%); }
   .venue-photo::after{ content:""; position:absolute; left:0; right:0; top:66%; bottom:0; background:repeating-linear-gradient(180deg, rgba(242,197,92,.10) 0 2px, transparent 2px 9px); }
-  .venue-photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; }
-  .pin{ position:absolute; z-index:2; left:50%; top:38%; transform:translate(-50%,-50%); width:170px; height:170px; border-radius:50% 50% 50% 0; rotate:-45deg; background:#fff; box-shadow:0 20px 40px -14px rgba(0,0,0,.6); display:grid; place-items:center; }
-  .pin span{ rotate:45deg; text-align:center; font-family:var(--font-heading); font-weight:900; color:var(--navy); font-size:22px; line-height:.95; }
+  .venue-photo img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:45% 50%; z-index:1; }
+  .pin{ position:absolute; z-index:2; left:50%; top:22%; transform:translate(-50%,-50%); width:128px; height:128px; border-radius:50% 50% 50% 0; rotate:-45deg; background:#fff; box-shadow:0 20px 40px -14px rgba(0,0,0,.6); display:grid; place-items:center; }
+  .pin span{ rotate:45deg; text-align:center; font-family:var(--font-heading); font-weight:900; color:var(--navy); font-size:18px; line-height:.95; }
   .pin span small{ display:block; color:var(--gold-ink); font-size:11px; letter-spacing:.2em; margin-top:6px; }
-  .venue-tag{ position:absolute; z-index:2; left:0; right:0; bottom:20px; text-align:center; font-size:12px; color:rgba(255,255,255,.55); }
+  .venue-tag{ position:absolute; z-index:2; left:0; right:0; bottom:20px; text-align:center; font-size:12px; text-shadow:0 1px 6px rgba(0,0,0,.8); color:rgba(255,255,255,.55); }
 
   /* About */
   .about{ display:grid; grid-template-columns:380px 1fr; gap:44px; align-items:center; }
@@ -807,7 +807,7 @@
     <p>The Vault Society, 57 Range Rd, Windham, NH, about 10 min from The Artisan Hotel.</p>
   </div>
   <div class="venue-photo">
-    <!-- [PLACEHOLDER: The Artisan Hotel / Tuscan Village photo; add <img src="..."> here] -->
+    <img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/immersion/artisan-hotel.jpg" alt="The Artisan Hotel at Tuscan Village, Salem NH, at night" onerror="this.remove()">
     <div class="pin"><span>SALEM<br>NH<small>OCT 14–16</small></span></div>
     <p class="venue-tag">The Artisan Hotel · Tuscan Village</p>
   </div>
