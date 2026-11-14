@@ -480,7 +480,9 @@
   /* ==== KAJABI HARDENING ==== */
   /* Kajabi wraps custom code in Section/Block containers with their own padding.
      Collapse up to three wrapper levels before JS runs; the script below handles the rest. */
-  *:has(> .bm-root), *:has(> * > .bm-root), *:has(> * > * > .bm-root){ padding-top:0 !important; padding-bottom:0 !important; margin-top:0 !important; margin-bottom:0 !important; min-height:0 !important; }
+  /* Also stop any wrapper from clipping or narrowing the full-width page (white strips at the sides). */
+  *:not(body):not(html):has(> .bm-root), *:not(body):not(html):has(> * > .bm-root), *:not(body):not(html):has(> * > * > .bm-root), *:not(body):not(html):has(> * > * > * > .bm-root), *:not(body):not(html):has(> * > * > * > * > .bm-root){ padding-top:0 !important; padding-bottom:0 !important; margin-top:0 !important; margin-bottom:0 !important; min-height:0 !important; overflow:visible !important; max-width:none !important; }
+  html{ overflow-x:hidden; }
   /* Theme element rules (p, li, label, a) would beat inherited colors and fonts. */
   .bm-root p,.bm-root li,.bm-root label,.bm-root span{ font-family:inherit; font-size:inherit; color:inherit; line-height:inherit; letter-spacing:inherit; }
   .bm-root a{ font-family:inherit; }
@@ -712,12 +714,14 @@
 <script>document.querySelectorAll('.bm-root [data-year]').forEach(function(el){ el.textContent = new Date().getFullYear(); });</script>
 <script>
 /* Kajabi: zero out the padding/margin of every wrapper between our page and <body>,
-   so Kajabi's Section/Block spacing can't leave a gap above or below the page. */
+   so Kajabi's Section/Block spacing can't leave a gap above or below the page, and
+   stop wrappers clipping/narrowing it so it reaches both edges of the window. */
 (function(){
   var el = document.querySelector('.bm-root');
   if (!el) return;
   for (var n = el.parentElement; n && n !== document.body && n !== document.documentElement; n = n.parentElement) {
     ['padding-top','padding-bottom','margin-top','margin-bottom','min-height'].forEach(function(p){ n.style.setProperty(p, '0', 'important'); });
+    n.style.setProperty('overflow', 'visible', 'important'); n.style.setProperty('max-width', 'none', 'important');
   }
 })();
 </script>
