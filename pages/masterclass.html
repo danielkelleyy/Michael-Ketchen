@@ -386,7 +386,7 @@
 /* ==== BOY SHARED STYLES END ==== */
 
   /* ---------- Page-specific: masterclass ---------- */
-  .bm-root .hero{ padding-bottom:56px; }
+  .bm-root .hero{ padding-top:60px; padding-bottom:56px; }
   .bm-root .hero h1{ font-size:clamp(30px,4.9vw,48px); }
   .bm-root .hero-photo{ position:relative; max-width:620px; margin:30px auto 0; border-radius:26px; overflow:hidden; background:var(--gold); box-shadow:0 0 0 6px #fff, 0 0 0 7px #F1DFB4, var(--shadow-card); aspect-ratio:970/798; }
   .bm-root .hero-photo::after{ content:"MK"; position:absolute; inset:0; display:grid; place-items:center; font-family:var(--font-heading); font-weight:900; font-size:80px; color:rgba(22,22,63,.25); z-index:0; }
@@ -465,6 +465,7 @@
     .bm-root .viz-deal .steps4 div:nth-child(-n+2){ border-bottom:1px solid var(--line); }
   }
   @media (max-width:640px){
+    .bm-root .hero{ padding-top:36px; }
     .bm-root .stats{ grid-template-columns:1fr; }
     .bm-root .journey{ grid-template-columns:1fr; gap:18px; text-align:left; }
     .bm-root .journey::before{ left:23px; right:auto; top:24px; bottom:24px; width:2px; height:auto; background:repeating-linear-gradient(180deg,var(--gold) 0 8px,transparent 8px 14px); }
@@ -488,13 +489,6 @@
 <body>
 <div class="bm-root">
 
-<header class="site-header">
-  <div class="header-inner">
-    <a class="logo" href="#top" aria-label="Bet On Yourself with Michael Ketchen">
-      <span class="logo-word">Bet On Yourself</span><span class="logo-pill">LIVE</span>
-    </a>
-  </div>
-</header>
 
 <main id="top">
 
