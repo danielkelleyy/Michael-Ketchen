@@ -112,7 +112,7 @@ Free live **Creative Financing Masterclass**, Tuesday, December 1, 2026 at 6:00 
 
 **Setting it up in Kajabi**
 1. Create a Kajabi **Form** (Marketing › Forms) with Name, Email, Phone and two custom fields: "Doors owned" and "Biggest financing roadblock". Set its redirect after submit to the confirmation page URL, and attach the masterclass tag/automation (webinar link + calendar invite emails).
-2. Open the form's embed code and copy its action URL (`.../forms/FORM_ID/form_submissions`) and each input's `name` into `KAJABI_FORM` at the bottom of `masterclass.html`. The defaults (`form_submission[name]`, `[email]`, `[phone_number]`, `[custom_1]`, `[custom_2]`) are the usual Kajabi names but must be checked against your form.
+2. The form action is wired to Kajabi form `2149784132` (`https://www.michaelketchen.com/forms/2149784132/form_submissions`). Check each input `name` in `KAJABI_FORM` at the bottom of `masterclass.html` against the form: `form_submission[name]`, `[email]`, `[phone_number]` are Kajabi standard; the two qualifier questions use `[custom_1]` and `[custom_2]`, which must match the custom field numbers on this form.
 3. Create two Kajabi Landing Pages, hide the default header/footer, add a **Custom Code** section to each, and paste the whole file.
 4. On the confirmation page, set `webinarLink` in `FUNNEL_CONFIG` and replace `WISTIA_MEDIA_ID` (or swap in a Kajabi video embed).
 5. Upload `assets/michael-headshot.jpg` and `assets/michael-speaking.jpg` to Kajabi's media library and swap the image URLs (search `main/assets/`).
