@@ -126,11 +126,6 @@
   .bm-root .hero .sub{ color:var(--muted); font-size:clamp(16px,2vw,19px); max-width:620px; margin:0 auto; }
 
   /* Countdown */
-  .bm-root .cd-label{ font-family:var(--font-heading); font-weight:700; font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin:30px 0 12px; }
-  .bm-root .countdown{ display:flex; justify-content:center; gap:10px; }
-  .bm-root .cd-box{ width:74px; padding:12px 0 9px; border-radius:14px; background:linear-gradient(180deg,#22225a,var(--navy-deep)); color:#fff; box-shadow:0 14px 26px -14px rgba(14,14,44,.8); text-align:center; }
-  .bm-root .cd-num{ display:block; font-family:var(--font-heading); font-weight:800; font-size:32px; line-height:1; padding-top:3px; }
-  .bm-root .cd-unit{ display:block; font-size:10px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.62); margin-top:6px; }
 
   /* Buttons */
   .bm-root .btn{ display:inline-flex; flex-wrap:wrap; align-items:center; justify-content:center; text-align:center; column-gap:0; row-gap:2px; font-family:var(--font-heading); font-weight:800; font-size:19px; line-height:1.15; padding:17px 34px 15px; border-radius:14px; border:none; cursor:pointer; text-decoration:none; transition:transform .15s ease, box-shadow .15s ease, filter .15s ease; }
@@ -155,10 +150,7 @@
   .bm-root .vip-strip .tag{ font-family:var(--font-heading); font-weight:800; font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; background:var(--gold); color:var(--navy); padding:6px 10px 4px; border-radius:7px; }
   .bm-root .mini-chip{ font-size:11.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; padding:4px 10px; border-radius:999px; border:1px solid var(--line); background:#fff; }
   .bm-root .mini-chip.vip{ border-color:var(--gold-light); color:var(--gold-ink); background:#fff7e6; }
-  .bm-root .proof{ margin-top:22px; display:flex; flex-direction:column; align-items:center; gap:12px; }
   .bm-root .stars{ color:var(--star); letter-spacing:2px; font-size:16px; }
-  .bm-root .proof-line{ font-size:14px; color:var(--muted); display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:center; }
-  .bm-root .proof-line strong{ color:var(--navy); }
   .bm-root .chips{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
   .bm-root .chip{ padding:8px 14px; border-radius:999px; background:#fff; border:1px solid var(--line); font-size:13.5px; font-weight:600; color:var(--muted); box-shadow:0 6px 14px -12px rgba(22,22,63,.6); }
   .bm-root .chip strong{ color:var(--navy); }
@@ -368,8 +360,6 @@
   @media (max-width: 560px){
     .bm-root .section{ padding:64px 0; }
     .bm-root .hero{ padding:32px 0 52px; }
-    .bm-root .cd-box{ width:64px; }
-    .bm-root .cd-num{ font-size:27px; }
     .bm-root .btn{ font-size:17px; padding:16px 22px 14px; }
     .bm-root .stats{ grid-template-columns:1fr; }
     .bm-root .stat{ display:flex; align-items:baseline; justify-content:center; gap:10px; }
@@ -395,7 +385,7 @@
   .bm-root .hero-photo .tag b{ display:block; font-family:var(--font-heading); font-size:17px; }
   .bm-root .hero-photo .tag span{ color:var(--gold-light); font-weight:600; }
 
-  /* Hero layout: stacked on mobile (date, headline, subheadline, photo, countdown...),
+  /* Hero layout: stacked on mobile (date, headline, subheadline, photo, button),
      two columns on desktop (text left, photo right). */
   .bm-root .hero-inner{ display:flex; flex-direction:column; align-items:center; }
   .bm-root .hero-text{ display:contents; }
@@ -403,10 +393,7 @@
   .bm-root .hero-text > h1{ order:2; }
   .bm-root .hero-text > .sub{ order:3; }
   .bm-root .hero-inner > .hero-photo{ order:4; width:100%; }
-  .bm-root .hero-text > .cd-label{ order:5; }
-  .bm-root .hero-text > .countdown{ order:6; }
   .bm-root .hero-text > .cta-wrap{ order:7; }
-  .bm-root .hero-text > .proof{ order:8; }
   @media (min-width:960px){
     .bm-root .hero{ padding:72px 0 80px; }
     .bm-root .hero-inner{ display:grid; grid-template-columns:1.12fr .88fr; column-gap:60px; align-items:center; max-width:1200px; text-align:left; }
@@ -414,10 +401,7 @@
     .bm-root .hero-text > .pill{ justify-content:flex-start; }
     .bm-root .hero h1{ font-size:clamp(36px,3.7vw,52px); margin:22px 0 18px; }
     .bm-root .hero .sub{ margin:0; max-width:560px; }
-    .bm-root .hero .countdown{ justify-content:flex-start; }
     .bm-root .hero .cta-wrap{ align-items:flex-start; }
-    .bm-root .hero .proof{ align-items:flex-start; }
-    .bm-root .hero .chips{ justify-content:flex-start; }
     .bm-root .hero-inner > .hero-photo{ margin:0; aspect-ratio:4/5; max-height:640px; border-radius:20px; border:2px solid var(--gold); box-shadow:0 0 0 8px rgba(217,160,47,.12), var(--shadow-card); }
     .bm-root .hero-photo img{ object-position:50% 30%; }
   }
@@ -465,14 +449,6 @@
   .bm-root .stat--feature{ background:linear-gradient(180deg,#22225a,var(--navy-deep)); border-color:var(--navy); }
   .bm-root .stat--feature b{ color:var(--gold-light); font-size:32px; }
   .bm-root .stat--feature span{ color:rgba(255,255,255,.75); }
-  .bm-root .journey{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:22px; position:relative; }
-  .bm-root .journey::before{ content:""; position:absolute; left:12%; right:12%; top:23px; height:2px; background:repeating-linear-gradient(90deg,var(--gold) 0 8px,transparent 8px 14px); }
-  .bm-root .jstep{ position:relative; text-align:center; padding:0 6px; }
-  .bm-root .jstep .jdot{ width:48px; height:48px; margin:0 auto 12px; border-radius:50%; background:#fff; border:2px solid var(--gold); display:grid; place-items:center; font-size:20px; position:relative; z-index:1; box-shadow:0 0 0 6px #fff; }
-  .bm-root .jstep b{ display:block; font-family:var(--font-heading); font-size:18px; color:var(--navy); line-height:1.15; }
-  .bm-root .jstep span{ display:block; font-size:13px; color:var(--muted); margin-top:4px; }
-  .bm-root .jstep--end .jdot{ background:var(--navy); border-color:var(--navy); color:var(--gold-light); }
-  .bm-root .jstep--end b{ color:var(--gold-ink); }
 
   /* Registration modal */
   .bm-root .modal{ position:fixed; inset:0; z-index:1000; display:none; align-items:flex-start; justify-content:center; padding:24px 16px; overflow-y:auto; background:rgba(14,14,44,.62); backdrop-filter:blur(3px); }
@@ -494,10 +470,6 @@
   @media (max-width:640px){
     .bm-root .hero{ padding-top:36px; }
     .bm-root .stats{ grid-template-columns:1fr; }
-    .bm-root .journey{ grid-template-columns:1fr; gap:18px; text-align:left; }
-    .bm-root .journey::before{ left:23px; right:auto; top:24px; bottom:24px; width:2px; height:auto; background:repeating-linear-gradient(180deg,var(--gold) 0 8px,transparent 8px 14px); }
-    .bm-root .jstep{ display:grid; grid-template-columns:48px 1fr; gap:14px; align-items:center; text-align:left; padding:0; }
-    .bm-root .jstep .jdot{ margin:0; }
     .bm-root .hero-photo{ box-shadow:0 0 0 4px #fff, 0 0 0 5px #F1DFB4, var(--shadow-card); }
     .bm-root .modal-card{ padding:30px 20px 24px; }
     .bm-root .modal-card h2{ font-size:28px; }
@@ -529,26 +501,11 @@
 
       <p class="sub">Seller financing, subject-to, private money, partnerships and HELOCs. I'll show you how we structure the capital around the asset, break down real deals with real numbers, and take your questions live.</p>
 
-      <p class="cd-label">Masterclass starts in</p>
-      <div class="countdown" data-countdown>
-        <div class="cd-box"><span class="cd-num" data-cd="d">00</span><span class="cd-unit">Days</span></div>
-        <div class="cd-box"><span class="cd-num" data-cd="h">00</span><span class="cd-unit">Hours</span></div>
-        <div class="cd-box"><span class="cd-num" data-cd="m">00</span><span class="cd-unit">Mins</span></div>
-        <div class="cd-box"><span class="cd-num" data-cd="s">00</span><span class="cd-unit">Secs</span></div>
-      </div>
-
       <div class="cta-wrap">
         <button type="button" class="btn btn-cta" data-open-modal>Save My Seat <span class="arrow">→</span></button>
         <span class="micro">Free · Live · No replay</span>
       </div>
 
-      <div class="proof">
-        <div class="chips">
-          <span class="chip">Hosted by <strong>Michael Ketchen</strong></span>
-          <span class="chip"><strong>$250M+</strong> in assets under management</span>
-          <span class="chip"><strong>First $75M</strong> built largely with private money</span>
-        </div>
-      </div>
       </div>
 
       <div class="hero-photo">
@@ -669,13 +626,6 @@
           </div>
         </div>
       </div>
-
-      <div class="journey" aria-label="Michael's journey">
-        <div class="jstep"><span class="jdot" aria-hidden="true">🍎</span><div><b>Public school teacher</b><span>$100K a year, on someone else's terms</span></div></div>
-        <div class="jstep"><span class="jdot" aria-hidden="true">✕</span><div><b>Loan pulled at closing</b><span>A 31-unit, $2.5M, gone at the table</span></div></div>
-        <div class="jstep"><span class="jdot" aria-hidden="true">🤝</span><div><b>Private money + seller carry</b><span>The first $75M, largely with other people's capital</span></div></div>
-        <div class="jstep jstep--end"><span class="jdot" aria-hidden="true">★</span><div><b>$250M+ AUM</b><span>Multifamily, STRs and in-house management</span></div></div>
-      </div>
     </div>
   </section>
 
@@ -762,15 +712,6 @@ var KAJABI_FORM = {
 /* ============================================================= */
 
 (function(){
-  var target = new Date(FUNNEL_CONFIG.eventISO).getTime();
-  var blocks = document.querySelectorAll('[data-countdown]');
-  function pad(n){ return (n < 10 ? '0' : '') + n; }
-  function tick(){
-    var diff = Math.max(0, target - Date.now());
-    var v = { d: Math.floor(diff / 864e5), h: Math.floor(diff % 864e5 / 36e5), m: Math.floor(diff % 36e5 / 6e4), s: Math.floor(diff % 6e4 / 1e3) };
-    blocks.forEach(function(b){ Object.keys(v).forEach(function(k){ b.querySelector('[data-cd="' + k + '"]').textContent = pad(v[k]); }); });
-  }
-  tick(); setInterval(tick, 1000);
   document.querySelectorAll('[data-year]').forEach(function(el){ el.textContent = new Date().getFullYear(); });
 
   var modal = document.getElementById('optin-modal');
