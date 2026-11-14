@@ -395,6 +395,33 @@
   .bm-root .hero-photo .tag b{ display:block; font-family:var(--font-heading); font-size:17px; }
   .bm-root .hero-photo .tag span{ color:var(--gold-light); font-weight:600; }
 
+  /* Hero layout: stacked on mobile (date, headline, subheadline, photo, countdown...),
+     two columns on desktop (text left, photo right). */
+  .bm-root .hero-inner{ display:flex; flex-direction:column; align-items:center; }
+  .bm-root .hero-text{ display:contents; }
+  .bm-root .hero-text > .pill{ order:1; }
+  .bm-root .hero-text > h1{ order:2; }
+  .bm-root .hero-text > .sub{ order:3; }
+  .bm-root .hero-inner > .hero-photo{ order:4; width:100%; }
+  .bm-root .hero-text > .cd-label{ order:5; }
+  .bm-root .hero-text > .countdown{ order:6; }
+  .bm-root .hero-text > .cta-wrap{ order:7; }
+  .bm-root .hero-text > .proof{ order:8; }
+  @media (min-width:960px){
+    .bm-root .hero{ padding:72px 0 80px; }
+    .bm-root .hero-inner{ display:grid; grid-template-columns:1.12fr .88fr; column-gap:60px; align-items:center; max-width:1200px; text-align:left; }
+    .bm-root .hero-text{ display:block; }
+    .bm-root .hero-text > .pill{ justify-content:flex-start; }
+    .bm-root .hero h1{ font-size:clamp(36px,3.7vw,52px); margin:22px 0 18px; }
+    .bm-root .hero .sub{ margin:0; max-width:560px; }
+    .bm-root .hero .countdown{ justify-content:flex-start; }
+    .bm-root .hero .cta-wrap{ align-items:flex-start; }
+    .bm-root .hero .proof{ align-items:flex-start; }
+    .bm-root .hero .chips{ justify-content:flex-start; }
+    .bm-root .hero-inner > .hero-photo{ margin:0; aspect-ratio:4/5; max-height:640px; border-radius:20px; border:2px solid var(--gold); box-shadow:0 0 0 8px rgba(217,160,47,.12), var(--shadow-card); }
+    .bm-root .hero-photo img{ object-position:50% 30%; }
+  }
+
   .bm-root .section-intro{ text-align:center; color:var(--muted); font-size:17px; max-width:620px; margin:-24px auto 40px; }
   .bm-root .section-intro b{ color:var(--navy); }
 
@@ -495,16 +522,12 @@
   <!-- ================= HERO: date → headline → subheadline → photo ================= -->
   <section class="hero">
     <div class="container hero-inner">
+      <div class="hero-text">
       <span class="pill"><span class="dot live"></span>Free Live Masterclass <span class="sep">·</span> Tuesday, Dec 1 <span class="sep">·</span> 6:00 PM ET</span>
 
       <h1>How We Built A <span class="hl">$250 Million Real Estate Portfolio</span> Using Creative Financing, And How You Can <span class="mark">Fund Your Next Deal Even When The Bank Says&nbsp;No</span></h1>
 
       <p class="sub">Seller financing, subject-to, private money, partnerships and HELOCs. I'll show you how we structure the capital around the asset, break down real deals with real numbers, and take your questions live.</p>
-
-      <div class="hero-photo">
-        <img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/michael-headshot.jpg" alt="Michael Ketchen" onerror="this.remove()">
-        <div class="tag"><b>Michael Ketchen</b><span>Co-founder, Commonwealth Collective</span></div>
-      </div>
 
       <p class="cd-label">Masterclass starts in</p>
       <div class="countdown" data-countdown>
@@ -526,6 +549,13 @@
           <span class="chip"><strong>First $75M</strong> built largely with private money</span>
         </div>
       </div>
+      </div>
+
+      <div class="hero-photo">
+        <img src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/michael-headshot.jpg" alt="Michael Ketchen" onerror="this.remove()">
+        <div class="tag"><b>Michael Ketchen</b><span>Co-founder, Commonwealth Collective</span></div>
+      </div>
+
     </div>
   </section>
 
