@@ -116,4 +116,5 @@ Free live **Creative Financing Masterclass**, Tuesday, December 1, 2026 at 6:00 
 3. Create two Kajabi Landing Pages, hide the default header/footer, add a **Custom Code** section to each, and paste the whole file.
 4. On the confirmation page, set `webinarLink` in `FUNNEL_CONFIG` and replace `WISTIA_MEDIA_ID` (or swap in a Kajabi video embed).
 5. Upload `assets/michael-headshot.jpg` and `assets/michael-speaking.jpg` to Kajabi's media library and swap the image URLs (search `main/assets/`).
-6. Submit a test registration and confirm the contact, custom fields and tag land in Kajabi and the redirect works.
+6. In the Custom Code section settings, set top/bottom padding to 0 if Kajabi offers it. The pages also remove Kajabi's wrapper padding themselves, and every style is scoped under `.bm-root` so the Kajabi theme can't restyle them. (Because of that scoping, don't re-sync the shared style block into these two pages with the GHL pages' block.)
+7. Submit a test registration and confirm the contact, custom fields and tag land in Kajabi and the redirect works.
