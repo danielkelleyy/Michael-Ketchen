@@ -102,3 +102,18 @@ A redesign of Michael's #BetOnYourself Real Estate Investor Immersion page (Oct 
 - **Sections:** sticky nav + marquee, cinematic hero, partner logo strip, intro, Four Pillars, experience tiles, 13-speaker lineup with bio popups, host banner, The Experience + 3-day agenda, tickets (GA / VIP / Speaker Day), testimonials, venue, about Michael, photo wall, FAQ, final CTA, sticky countdown bar.
 - **Images:** `assets/immersion/` holds speaker cutouts, collage strips and partner logos, cropped from a screenshot of his current page. Re-host in GHL before launch.
 - **To fill:** the three checkout URLs (`FUNNEL_CONFIG.checkout`), the promo and testimonial videos, real event photos (every tile labelled "Event photo"), a venue photo, and the terms/privacy URLs.
+
+## Masterclass funnel (Kajabi): `pages/masterclass.html` + `pages/masterclass-confirmation.html`
+
+Free live **Creative Financing Masterclass**, Tuesday, December 1, 2026 at 6:00 PM ET. Michael teaches the creative financing strategies, breaks down deals, then pitches the Arizona Creative Financing Mastermind live. Copy: "Michael Ketchen - Masterclass Landing Page - Copy v1" in Drive (07 Funnels › Masterclass Funnel).
+
+- **Landing page** (`masterclass.html`): date, headline, subheadline, then Michael's photo; countdown + Save My Seat; 4 topic cards; Meet Michael; final CTA. No FAQ, case studies or VIP strip.
+- **Confirmation page** (`masterclass-confirmation.html`): "Your Seat Is Confirmed", Google / Apple / Outlook calendar buttons, video slot, accept-the-invite visual, and "3 Things Before Tuesday".
+
+**Setting it up in Kajabi**
+1. Create a Kajabi **Form** (Marketing › Forms) with Name, Email, Phone and two custom fields: "Doors owned" and "Biggest financing roadblock". Set its redirect after submit to the confirmation page URL, and attach the masterclass tag/automation (webinar link + calendar invite emails).
+2. Open the form's embed code and copy its action URL (`.../forms/FORM_ID/form_submissions`) and each input's `name` into `KAJABI_FORM` at the bottom of `masterclass.html`. The defaults (`form_submission[name]`, `[email]`, `[phone_number]`, `[custom_1]`, `[custom_2]`) are the usual Kajabi names but must be checked against your form.
+3. Create two Kajabi Landing Pages, hide the default header/footer, add a **Custom Code** section to each, and paste the whole file.
+4. On the confirmation page, set `webinarLink` in `FUNNEL_CONFIG` and replace `WISTIA_MEDIA_ID` (or swap in a Kajabi video embed).
+5. Upload `assets/michael-headshot.jpg` and `assets/michael-speaking.jpg` to Kajabi's media library and swap the image URLs (search `main/assets/`).
+6. Submit a test registration and confirm the contact, custom fields and tag land in Kajabi and the redirect works.
