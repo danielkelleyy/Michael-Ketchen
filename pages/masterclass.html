@@ -10,11 +10,10 @@
   whole file into it. Hide Kajabi's default header/footer on that page so this
   markup owns the full page. See ../README.md ("Masterclass funnel (Kajabi)").
 
-  QUICK-SWAP CONFIG (bottom <script>):
-    1) KAJABI_FORM.action — the form_submissions URL of the Kajabi form.
-    2) KAJABI_FORM.fields — the Kajabi field names for name/email/phone and the
-       two custom questions (copy them from the Kajabi form's embed code).
-    3) KAJABI_FORM.thankYouUrl — the confirmation page (masterclass-confirmation).
+  FORM: the registration popup posts straight to Kajabi form 2149784132
+  (action URL + field names are on the <form> tag near the bottom). The popup
+  opens with plain links (#save-seat), so it works even if Kajabi doesn't run
+  the page's scripts. Set the Kajabi form's redirect to the confirmation page.
   Images load from this repo's assets/; re-upload them to Kajabi's media
   library before launch and swap the URLs (search "main/assets/").
 -->
@@ -448,10 +447,10 @@
 
   /* Registration modal */
   .bm-root .modal{ position:fixed; inset:0; z-index:2147483000; display:none; align-items:flex-start; justify-content:center; padding:24px 16px; overflow-y:auto; background:rgba(14,14,44,.62); backdrop-filter:blur(3px); }
-  .bm-root .modal.open{ display:flex; }
-  .bm-root .modal-card{ position:relative; width:100%; max-width:520px; margin:auto; background:#fff; border-radius:26px; padding:34px 30px 30px; box-shadow:0 40px 80px -30px rgba(0,0,0,.55); animation:pop .22s ease; }
+  .bm-root .modal.open, .bm-root .modal:target{ display:flex; }
+  .bm-root .modal-card{ position:relative; width:100%; max-width:520px; margin:4vh auto 24px; background:#fff; border-radius:26px; padding:34px 30px 30px; box-shadow:0 40px 80px -30px rgba(0,0,0,.55); animation:pop .22s ease; }
   @keyframes pop{ from{ transform:translateY(12px); opacity:0 } to{ transform:none; opacity:1 } }
-  .bm-root .modal-close{ position:absolute; top:14px; right:14px; width:38px; height:38px; border:none; border-radius:10px; background:var(--cream-soft); color:var(--navy); font-size:22px; cursor:pointer; line-height:1; }
+  .bm-root .modal-close{ position:absolute; top:14px; right:14px; width:38px; height:38px; display:grid; place-items:center; text-decoration:none; border:none; border-radius:10px; background:var(--cream-soft); color:var(--navy); font-size:22px; cursor:pointer; line-height:1; }
   .bm-root .modal-card h2{ font-size:34px; font-weight:800; margin:16px 0 4px; }
   .bm-root .modal-card .when{ color:var(--muted); margin-bottom:22px; }
   .bm-root .modal-card .field + .field{ margin-top:12px; }
@@ -502,7 +501,7 @@
       <p class="sub">Seller financing, subject-to, private money, partnerships and HELOCs. I'll show you how we structure the capital around the asset, break down real deals with real numbers, and take your questions live.</p>
 
       <div class="cta-wrap">
-        <button type="button" class="btn btn-cta" data-open-modal>Save My Seat <span class="arrow">→</span></button>
+        <a href="#save-seat" class="btn btn-cta" data-open-modal>Save My Seat <span class="arrow">→</span></a>
         <span class="micro">Free · Live · No replay</span>
       </div>
 
@@ -596,7 +595,7 @@
       <p class="disclaimer">Visuals are illustrations only and not a promise of your results.</p>
 
       <div class="cta-wrap">
-        <button type="button" class="btn btn-cta" data-open-modal>Save My Seat <span class="arrow">→</span></button>
+        <a href="#save-seat" class="btn btn-cta" data-open-modal>Save My Seat <span class="arrow">→</span></a>
       </div>
     </div>
   </section>
@@ -637,7 +636,7 @@
         <h2>It's Not What You Buy, It's How You Buy It</h2>
         <p class="when">Join me live <b>Tuesday, December 1</b> at <b>6:00 PM ET</b>.</p>
         <div class="cta-wrap">
-          <button type="button" class="btn btn-cta" data-open-modal>Save My Seat <span class="arrow">→</span></button>
+          <a href="#save-seat" class="btn btn-cta" data-open-modal>Save My Seat <span class="arrow">→</span></a>
           <span class="micro">Free · Live · No replay</span>
         </div>
       </div>
@@ -654,19 +653,18 @@
 </footer>
 
 <!-- ================= REGISTRATION MODAL (posts to a Kajabi form) ================= -->
-<div class="modal" id="optin-modal" role="dialog" aria-modal="true" aria-labelledby="optin-title">
+<div class="modal" id="save-seat" role="dialog" aria-modal="true" aria-labelledby="optin-title">
   <div class="modal-card">
-    <button type="button" class="modal-close" data-close-modal aria-label="Close">×</button>
+    <a href="#close" class="modal-close" data-close-modal aria-label="Close">×</a>
     <div class="center"><span class="pill"><span class="dot live"></span>Free Live Masterclass</span></div>
     <h2 id="optin-title" class="center">Save your seat</h2>
     <p class="when center">Tuesday, Dec 1 at 6:00 PM ET</p>
 
-    <form id="optin-form" method="post" accept-charset="UTF-8" novalidate>
-      <input class="field" type="text" data-field="name" placeholder="First Name*" autocomplete="given-name" required>
-      <input class="field" type="email" data-field="email" placeholder="Email Address*" autocomplete="email" required>
-      <input class="field" type="tel" data-field="phone" placeholder="Phone Number*" autocomplete="tel" required>
+    <form id="optin-form" action="https://www.michaelketchen.com/forms/2149784132/form_submissions" method="post" accept-charset="UTF-8">
+      <input class="field" type="text" data-field="name" name="form_submission[name]" placeholder="First Name*" autocomplete="given-name" required>
+      <input class="field" type="email" data-field="email" name="form_submission[email]" placeholder="Email Address*" autocomplete="email" required>
+      <input class="field" type="tel" data-field="phone" name="form_submission[phone_number]" placeholder="Phone Number*" autocomplete="tel" required>
 
-      <p class="form-error" id="optin-error">Please enter your name, email and phone so we can send your link.</p>
       <button type="submit" class="btn btn-cta btn-block">Claim My Free Seat</button>
       <p class="privacy">By registering you agree to receive emails and texts about this masterclass. Msg &amp; data rates may apply. Reply STOP to opt out.</p>
     </form>
@@ -681,18 +679,9 @@ var FUNNEL_CONFIG = {
   // Masterclass start (EST, -05:00).
   eventISO: "2026-12-01T18:00:00-05:00"
 };
-// Kajabi form 2149784132 (Name, Email, Phone). Its "redirect after submit"
-// setting in Kajabi should point to the masterclass confirmation page.
-var KAJABI_FORM = {
-  action: "https://www.michaelketchen.com/forms/2149784132/form_submissions",
-  fields: {
-    name: "form_submission[name]",
-    email: "form_submission[email]",
-    phone: "form_submission[phone_number]"
-  },
-  // Used only for local testing when no action URL is set.
-  thankYouUrl: "masterclass-confirmation.html"
-};
+// Kajabi form 2149784132: the action URL and field names are written straight
+// into the <form> tag below, so it submits even if Kajabi doesn't run scripts.
+// The form's "redirect after submit" in Kajabi should be the confirmation page.
 /* ============================================================= */
 
 (function(){
@@ -704,7 +693,7 @@ var KAJABI_FORM = {
   var modal = null;
   function getModal(){
     if (modal && document.body.contains(modal)) return modal;
-    modal = document.getElementById('optin-modal');
+    modal = document.getElementById('save-seat');
     if (!modal) return null;
     if (!modal.parentElement.classList.contains('bm-portal')) {
       var portal = document.createElement('div');
@@ -725,23 +714,16 @@ var KAJABI_FORM = {
     var t = e.target;
     if (!t || !t.closest) return;
     if (t.closest('[data-open-modal]')) { e.preventDefault(); openModal(); return; }
-    if (t.closest('[data-close-modal]') || (modal && t === modal)) closeModal();
+    if (t.closest('[data-close-modal]') || (modal && t === modal)) { e.preventDefault(); closeModal(); }
   });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
 
-  // Map our inputs onto the Kajabi form's field names, then submit to Kajabi.
   function setupForm(form){
     if (!form || form.getAttribute('data-ready')) return;
     form.setAttribute('data-ready', '1');
-    form.querySelectorAll('[data-field]').forEach(function(el){ el.name = KAJABI_FORM.fields[el.getAttribute('data-field')]; });
-    form.addEventListener('submit', function(e){
-      var err = form.querySelector('#optin-error');
-      if (!form.checkValidity()) { e.preventDefault(); err.style.display = 'block'; return; }
-      err.style.display = 'none';
+    form.addEventListener('submit', function(){
       var btn = form.querySelector('button[type="submit"]');
       btn.disabled = true; btn.textContent = 'Saving your seat…';
-      if (KAJABI_FORM.action.charAt(0) === '[') { e.preventDefault(); window.location.href = KAJABI_FORM.thankYouUrl; return; }
-      form.action = KAJABI_FORM.action;
     });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', getModal); else getModal();

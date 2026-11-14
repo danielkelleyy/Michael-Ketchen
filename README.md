@@ -112,7 +112,7 @@ Free live **Creative Financing Masterclass**, Tuesday, December 1, 2026 at 6:00 
 
 **Setting it up in Kajabi**
 1. Kajabi **Form** `2149784132` (Marketing › Forms) needs Name, Email and Phone turned on. Set its redirect after submit to the confirmation page URL, and attach the masterclass tag/automation (webinar link + calendar invite emails).
-2. The popup posts to `https://www.michaelketchen.com/forms/2149784132/form_submissions` with `form_submission[name]`, `form_submission[email]` and `form_submission[phone_number]` (set in `KAJABI_FORM` at the bottom of `masterclass.html`). On load the popup is moved to `<body>` so Kajabi section styles can't hide it. Keep the form's reCAPTCHA setting off, or the custom popup can't submit.
+2. The popup's `<form>` tag posts straight to `https://www.michaelketchen.com/forms/2149784132/form_submissions` with `form_submission[name]`, `form_submission[email]` and `form_submission[phone_number]`. The Save My Seat buttons are plain `#save-seat` links that open the popup with CSS, so it works even if Kajabi doesn't run the page's scripts; when scripts do run, the popup is moved to `<body>` so section styles can't hide it. Keep the form's reCAPTCHA off, or the custom popup can't submit.
 3. Create two Kajabi Landing Pages, hide the default header/footer, add a **Custom Code** section to each, and paste the whole file.
 4. On the confirmation page, set `webinarLink` in `FUNNEL_CONFIG` and replace `WISTIA_MEDIA_ID` (or swap in a Kajabi video embed).
 5. Upload `assets/michael-headshot.jpg` and `assets/michael-speaking.jpg` to Kajabi's media library and swap the image URLs (search `main/assets/`).
