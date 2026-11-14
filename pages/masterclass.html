@@ -336,10 +336,6 @@
   .bm-root .field:focus{ border-color:var(--gold); box-shadow:0 0 0 4px rgba(217,160,47,.18); }
   .bm-root .field::placeholder{ color:#8A8DA3; }
   .bm-root select.field{ appearance:none; -webkit-appearance:none; background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%); background-position:calc(100% - 22px) 52%, calc(100% - 16px) 52%; background-size:6px 6px; background-repeat:no-repeat; padding-right:44px; }
-  .bm-root .q-label{ display:block; font-weight:700; color:var(--navy); font-size:15.5px; margin:20px 0 10px; }
-  .bm-root .q-label .req{ color:var(--danger); }
-  .bm-root .radio{ display:flex; align-items:center; gap:12px; padding:8px 0; cursor:pointer; font-weight:600; color:#33365A; font-size:15px; }
-  .bm-root .radio input{ width:20px; height:20px; accent-color:var(--gold); margin:0; flex:none; }
   .bm-root .form-error{ display:none; color:var(--danger); font-size:13.5px; font-weight:600; margin-top:12px; }
 
   /* Footer */
@@ -451,7 +447,7 @@
   .bm-root .stat--feature span{ color:rgba(255,255,255,.75); }
 
   /* Registration modal */
-  .bm-root .modal{ position:fixed; inset:0; z-index:1000; display:none; align-items:flex-start; justify-content:center; padding:24px 16px; overflow-y:auto; background:rgba(14,14,44,.62); backdrop-filter:blur(3px); }
+  .bm-root .modal{ position:fixed; inset:0; z-index:2147483000; display:none; align-items:flex-start; justify-content:center; padding:24px 16px; overflow-y:auto; background:rgba(14,14,44,.62); backdrop-filter:blur(3px); }
   .bm-root .modal.open{ display:flex; }
   .bm-root .modal-card{ position:relative; width:100%; max-width:520px; margin:auto; background:#fff; border-radius:26px; padding:34px 30px 30px; box-shadow:0 40px 80px -30px rgba(0,0,0,.55); animation:pop .22s ease; }
   @keyframes pop{ from{ transform:translateY(12px); opacity:0 } to{ transform:none; opacity:1 } }
@@ -474,6 +470,10 @@
     .bm-root .modal-card{ padding:30px 20px 24px; }
     .bm-root .modal-card h2{ font-size:28px; }
   }
+
+  /* The popup is moved to <body> on load (see script) so Kajabi section
+     transforms, overflow or z-index can't hide it. */
+  .bm-root.bm-portal{ min-height:0 !important; width:auto; margin:0; background:none !important; }
 
   /* ==== KAJABI HARDENING ==== */
   /* Kajabi wraps custom code in Section/Block containers with their own padding.
@@ -666,19 +666,7 @@
       <input class="field" type="email" data-field="email" placeholder="Email Address*" autocomplete="email" required>
       <input class="field" type="tel" data-field="phone" placeholder="Phone Number*" autocomplete="tel" required>
 
-      <span class="q-label">How many doors do you own right now? <span class="req">*</span></span>
-      <label class="radio"><input type="radio" data-field="doors" name="q_doors" value="0" required> 0</label>
-      <label class="radio"><input type="radio" data-field="doors" name="q_doors" value="1-5"> 1–5</label>
-      <label class="radio"><input type="radio" data-field="doors" name="q_doors" value="6-20"> 6–20</label>
-      <label class="radio"><input type="radio" data-field="doors" name="q_doors" value="20+"> 20+</label>
-
-      <span class="q-label">What's your biggest financing roadblock? <span class="req">*</span></span>
-      <label class="radio"><input type="radio" data-field="roadblock" name="q_roadblock" value="Bank says no / terms kill the deal" required> The bank keeps saying no, or the terms kill the deal</label>
-      <label class="radio"><input type="radio" data-field="roadblock" name="q_roadblock" value="Down payment"> Coming up with the down payment</label>
-      <label class="radio"><input type="radio" data-field="roadblock" name="q_roadblock" value="Don't know how to structure"> I don't know how to structure a creative deal</label>
-      <label class="radio"><input type="radio" data-field="roadblock" name="q_roadblock" value="Scale without giving up equity"> I want to scale faster without giving up equity</label>
-
-      <p class="form-error" id="optin-error">Please fill in every field so we can send your link.</p>
+      <p class="form-error" id="optin-error">Please enter your name, email and phone so we can send your link.</p>
       <button type="submit" class="btn btn-cta btn-block">Claim My Free Seat</button>
       <p class="privacy">By registering you agree to receive emails and texts about this masterclass. Msg &amp; data rates may apply. Reply STOP to opt out.</p>
     </form>
@@ -693,20 +681,16 @@ var FUNNEL_CONFIG = {
   // Masterclass start (EST, -05:00).
   eventISO: "2026-12-01T18:00:00-05:00"
 };
-// Kajabi form: create a Form in Kajabi (Marketing > Forms) with Name, Email,
-// Phone and two custom fields. Open its embed code and copy the form's action
-// URL and each input's name attribute here.
+// Kajabi form 2149784132 (Name, Email, Phone). Its "redirect after submit"
+// setting in Kajabi should point to the masterclass confirmation page.
 var KAJABI_FORM = {
-  action: "https://www.michaelketchen.com/forms/2149784132/form_submissions", // Kajabi form 2149784132
+  action: "https://www.michaelketchen.com/forms/2149784132/form_submissions",
   fields: {
     name: "form_submission[name]",
     email: "form_submission[email]",
-    phone: "form_submission[phone_number]",
-    doors: "form_submission[custom_1]",
-    roadblock: "form_submission[custom_2]"
+    phone: "form_submission[phone_number]"
   },
-  // Kajabi's form "redirect after submit" should point to the confirmation page.
-  // Used only for local testing when no action URL is set yet.
+  // Used only for local testing when no action URL is set.
   thankYouUrl: "masterclass-confirmation.html"
 };
 /* ============================================================= */
@@ -714,26 +698,53 @@ var KAJABI_FORM = {
 (function(){
   document.querySelectorAll('[data-year]').forEach(function(el){ el.textContent = new Date().getFullYear(); });
 
-  var modal = document.getElementById('optin-modal');
-  function openModal(){ modal.classList.add('open'); document.body.style.overflow = 'hidden'; setTimeout(function(){ modal.querySelector('input').focus(); }, 50); }
-  function closeModal(){ modal.classList.remove('open'); document.body.style.overflow = ''; }
-  document.querySelectorAll('[data-open-modal]').forEach(function(b){ b.addEventListener('click', openModal); });
-  modal.querySelector('[data-close-modal]').addEventListener('click', closeModal);
-  modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+  // Kajabi can re-render custom code or wrap it in sections with transforms and
+  // overflow, so: find the popup lazily, move it to <body>, and listen for clicks
+  // on the whole document instead of binding to each button.
+  var modal = null;
+  function getModal(){
+    if (modal && document.body.contains(modal)) return modal;
+    modal = document.getElementById('optin-modal');
+    if (!modal) return null;
+    if (!modal.parentElement.classList.contains('bm-portal')) {
+      var portal = document.createElement('div');
+      portal.className = 'bm-root bm-portal';
+      document.body.appendChild(portal);
+      portal.appendChild(modal);
+      setupForm(modal.querySelector('#optin-form'));
+    }
+    return modal;
+  }
+  function openModal(){
+    var m = getModal(); if (!m) return;
+    m.classList.add('open'); document.body.style.overflow = 'hidden';
+    setTimeout(function(){ var i = m.querySelector('input'); if (i) i.focus(); }, 50);
+  }
+  function closeModal(){ if (modal) modal.classList.remove('open'); document.body.style.overflow = ''; }
+  document.addEventListener('click', function(e){
+    var t = e.target;
+    if (!t || !t.closest) return;
+    if (t.closest('[data-open-modal]')) { e.preventDefault(); openModal(); return; }
+    if (t.closest('[data-close-modal]') || (modal && t === modal)) closeModal();
+  });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
 
   // Map our inputs onto the Kajabi form's field names, then submit to Kajabi.
-  var form = document.getElementById('optin-form');
-  form.querySelectorAll('[data-field]').forEach(function(el){ el.name = KAJABI_FORM.fields[el.getAttribute('data-field')]; });
-  form.addEventListener('submit', function(e){
-    var err = document.getElementById('optin-error');
-    if (!form.checkValidity()) { e.preventDefault(); err.style.display = 'block'; return; }
-    err.style.display = 'none';
-    var btn = form.querySelector('button[type="submit"]');
-    btn.disabled = true; btn.textContent = 'Saving your seat…';
-    if (KAJABI_FORM.action.charAt(0) === '[') { e.preventDefault(); window.location.href = KAJABI_FORM.thankYouUrl; return; }
-    form.action = KAJABI_FORM.action;
-  });
+  function setupForm(form){
+    if (!form || form.getAttribute('data-ready')) return;
+    form.setAttribute('data-ready', '1');
+    form.querySelectorAll('[data-field]').forEach(function(el){ el.name = KAJABI_FORM.fields[el.getAttribute('data-field')]; });
+    form.addEventListener('submit', function(e){
+      var err = form.querySelector('#optin-error');
+      if (!form.checkValidity()) { e.preventDefault(); err.style.display = 'block'; return; }
+      err.style.display = 'none';
+      var btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true; btn.textContent = 'Saving your seat…';
+      if (KAJABI_FORM.action.charAt(0) === '[') { e.preventDefault(); window.location.href = KAJABI_FORM.thankYouUrl; return; }
+      form.action = KAJABI_FORM.action;
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', getModal); else getModal();
 })();
 </script>
 <script>

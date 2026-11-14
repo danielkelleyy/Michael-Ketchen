@@ -111,10 +111,10 @@ Free live **Creative Financing Masterclass**, Tuesday, December 1, 2026 at 6:00 
 - **Confirmation page** (`masterclass-confirmation.html`): "Your Seat Is Confirmed", Google / Apple / Outlook calendar buttons, video slot, accept-the-invite visual, and "3 Things Before Tuesday".
 
 **Setting it up in Kajabi**
-1. Create a Kajabi **Form** (Marketing › Forms) with Name, Email, Phone and two custom fields: "Doors owned" and "Biggest financing roadblock". Set its redirect after submit to the confirmation page URL, and attach the masterclass tag/automation (webinar link + calendar invite emails).
-2. The form action is wired to Kajabi form `2149784132` (`https://www.michaelketchen.com/forms/2149784132/form_submissions`). Check each input `name` in `KAJABI_FORM` at the bottom of `masterclass.html` against the form: `form_submission[name]`, `[email]`, `[phone_number]` are Kajabi standard; the two qualifier questions use `[custom_1]` and `[custom_2]`, which must match the custom field numbers on this form.
+1. Kajabi **Form** `2149784132` (Marketing › Forms) needs Name, Email and Phone turned on. Set its redirect after submit to the confirmation page URL, and attach the masterclass tag/automation (webinar link + calendar invite emails).
+2. The popup posts to `https://www.michaelketchen.com/forms/2149784132/form_submissions` with `form_submission[name]`, `form_submission[email]` and `form_submission[phone_number]` (set in `KAJABI_FORM` at the bottom of `masterclass.html`). On load the popup is moved to `<body>` so Kajabi section styles can't hide it. Keep the form's reCAPTCHA setting off, or the custom popup can't submit.
 3. Create two Kajabi Landing Pages, hide the default header/footer, add a **Custom Code** section to each, and paste the whole file.
 4. On the confirmation page, set `webinarLink` in `FUNNEL_CONFIG` and replace `WISTIA_MEDIA_ID` (or swap in a Kajabi video embed).
 5. Upload `assets/michael-headshot.jpg` and `assets/michael-speaking.jpg` to Kajabi's media library and swap the image URLs (search `main/assets/`).
 6. In the Custom Code section settings, set top/bottom padding to 0 if Kajabi offers it. The pages also remove Kajabi's wrapper padding themselves, and every style is scoped under `.bm-root` so the Kajabi theme can't restyle them. (Because of that scoping, don't re-sync the shared style block into these two pages with the GHL pages' block.)
-7. Submit a test registration and confirm the contact, custom fields and tag land in Kajabi and the redirect works.
+7. Submit a test registration on the live page and confirm the contact (with phone) and tag land in Kajabi and the redirect works.
