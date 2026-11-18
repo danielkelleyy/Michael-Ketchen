@@ -9,8 +9,9 @@
 
   QUICK-SWAP CONFIG:
     1) FUNNEL_CONFIG (bottom <script>) — masterclass time, title and join link.
-    2) WISTIA_MEDIA_ID — Michael's "watch this, then check your email" video
-       (or swap the whole .video-inner block for a Kajabi video embed).
+    2) Video: assets/masterclass-confirmation.mp4 in the repo, served via jsDelivr
+       (the <video> tag below). To swap it, replace that file (jsDelivr can take up
+       to 12h to refresh) or point the <source> at a Kajabi/Wistia MP4 URL.
 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,9 +24,6 @@
 
 <!-- ================= TRACKING PIXELS: paste Meta Pixel / Google Ads / GTM here ================= -->
 <!-- ================================================================================================ -->
-
-<!-- Wistia player -->
-<script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
 
 <style>
 /* ==== BOY SHARED STYLES START ==== */
@@ -300,21 +298,8 @@
 
   /* Video slot */
   .bm-root .bm-video-frame{ max-width:720px; margin:28px auto 0; padding:8px; border-radius:22px; background:#fff; border:1px solid var(--line); box-shadow:var(--shadow-card); }
+  .bm-root .bm-video{ position:absolute; inset:0; width:100%; height:100%; max-width:none; display:block; object-fit:contain; background:var(--navy-deep); border:0; margin:0; }
   .bm-root .bm-video-inner{ position:relative; aspect-ratio:16/9; border-radius:16px; overflow:hidden; background:radial-gradient(circle at 70% 40%, #2c2c72, var(--navy-deep)); }
-  .bm-root .bm-video-placeholder{ position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:6px; padding:0 8%; color:#fff; }
-  .bm-root .bm-video-placeholder .bm-vp-1{ font-family:var(--font-heading); font-weight:800; font-size:clamp(22px,4vw,40px); line-height:1; }
-  .bm-root .bm-video-placeholder .bm-vp-2{ font-family:var(--font-heading); font-weight:900; font-size:clamp(40px,8vw,82px); line-height:.9; }
-  .bm-root .bm-video-placeholder .bm-vp-3{ display:inline-block; background:var(--gold); color:var(--navy); font-family:var(--font-heading); font-weight:900; font-size:clamp(22px,4.4vw,44px); line-height:1; padding:8px 12px 4px; border-radius:6px; }
-  .bm-root .bm-video-placeholder .bm-play{ position:absolute; right:12%; top:50%; transform:translateY(-50%); width:clamp(56px,10vw,96px); aspect-ratio:1; border-radius:50%; background:#fff; display:grid; place-items:center; box-shadow:0 0 0 10px rgba(255,255,255,.15); }
-  .bm-root .bm-video-placeholder .bm-play::after{ content:""; margin-left:6px; border-style:solid; border-width:clamp(11px,1.8vw,18px) 0 clamp(11px,1.8vw,18px) clamp(18px,3vw,30px); border-color:transparent transparent transparent var(--navy); }
-  .bm-root .bm-video-placeholder .bm-vp-face{ position:absolute; top:0; right:0; bottom:0; width:50%; height:100%; max-width:none; object-fit:cover; object-position:50% 30%; clip-path:polygon(16% 0,100% 0,100% 100%,0 100%); background:var(--gold); }
-  .bm-root .bm-video-placeholder.bm-has-face{ padding-right:46%; }
-  .bm-root .bm-video-placeholder.bm-has-face .bm-play{ right:auto; left:8%; top:auto; bottom:9%; transform:none; width:clamp(44px,8vw,72px); }
-  .bm-root .bm-video-placeholder.bm-has-face .bm-play::after{ border-width:clamp(9px,1.4vw,14px) 0 clamp(9px,1.4vw,14px) clamp(14px,2.3vw,23px); }
-  .bm-root .bm-video-placeholder.bm-has-face .bm-vp-1{ font-size:clamp(15px,3vw,32px); }
-  .bm-root .bm-video-placeholder.bm-has-face .bm-vp-2{ font-size:clamp(30px,6.4vw,66px); }
-  .bm-root .bm-video-placeholder.bm-has-face .bm-vp-3{ font-size:clamp(15px,3.4vw,36px); }
-  .bm-root .bm-video-inner .wistia_responsive_padding{ position:absolute !important; inset:0; padding:0 !important; }
 
   /* Calendar-invite mock */
   .bm-root .bm-invite{ max-width:560px; margin:0 auto; background:#EEF3FB; border:1px solid #D6E2F5; border-radius:16px; padding:20px 22px; text-align:left; font-family:Roboto,'Montserrat',sans-serif; }
@@ -378,7 +363,6 @@
     .bm-root .bm-pill{ border-radius:12px; }
     .bm-root .bm-invite .bm-i-btns span{ padding:7px 14px; font-size:13px; }
     .bm-root .bm-invite .bm-i-btns span.bm-light{ display:none; }
-    .bm-root .bm-video-placeholder.bm-has-face .bm-play{ left:auto; right:5%; bottom:7%; }
   }
 /* ==== BOY SHARED STYLES END ==== */
 
@@ -432,20 +416,11 @@
 
       <div class="bm-video-frame">
         <div class="bm-video-inner">
-          <!-- Replace WISTIA_MEDIA_ID with Michael's confirmation video id. -->
-          <div class="wistia_responsive_padding" data-wistia-slot="WISTIA_MEDIA_ID" style="display:none">
-            <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-              <div class="wistia_embed wistia_async_WISTIA_MEDIA_ID seo=true videoFoam=true" style="height:100%;position:relative;width:100%">&nbsp;</div>
-            </div>
-          </div>
-          <div class="bm-video-placeholder bm-has-face" aria-hidden="true">
-            <img class="bm-vp-face" src="https://raw.githubusercontent.com/danielkelleyy/michael-ketchen/main/assets/michael-headshot.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.remove('has-face'); this.remove()">
-            <span class="bm-vp-1">WATCH THIS</span>
-            <span class="bm-vp-2">VIDEO</span>
-            <span class="bm-vp-1">THEN CHECK</span>
-            <span class="bm-vp-3">YOUR EMAIL</span>
-            <span class="bm-play"></span>
-          </div>
+          <video class="bm-video" controls playsinline preload="metadata" poster="https://raw.githubusercontent.com/danielkelleyy/Michael-Ketchen/main/assets/masterclass-confirmation-poster.jpg">
+            <source src="https://cdn.jsdelivr.net/gh/danielkelleyy/Michael-Ketchen@main/assets/masterclass-confirmation.mp4" type="video/mp4">
+            <!-- Fallback if jsDelivr is unreachable: the same file straight from GitHub. -->
+            <source src="https://raw.githubusercontent.com/danielkelleyy/Michael-Ketchen/main/assets/masterclass-confirmation.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
 
@@ -558,11 +533,6 @@ var FUNNEL_CONFIG = {
     'END:VEVENT','END:VCALENDAR'].join('\r\n');
   document.querySelectorAll('[data-ics]').forEach(function(a){ a.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics); });
 
-  var vslot = document.querySelector('[data-wistia-slot]');
-  if (vslot && vslot.getAttribute('data-wistia-slot') !== 'WISTIA_' + 'MEDIA_ID') {
-    vslot.style.display = 'block';
-    var ph = vslot.parentNode.querySelector('.bm-video-placeholder'); if (ph) ph.remove();
-  }
 })();
 </script>
 <script>
